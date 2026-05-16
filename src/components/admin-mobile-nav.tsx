@@ -56,15 +56,25 @@ export const AdminMobileNav: React.FC<MobileNavProps> = ({
 
   return (
     <>
-      {/* Botão do menu mobile */}
-      <Button
-        variant="ghost"
-        size="sm"
-        className="lg:hidden fixed top-4 left-4 z-50"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-      </Button>
+      {/* Header Mobile */}
+      <div className="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between flex-shrink-0 z-40">
+        <div className="flex items-center gap-2">
+          <div className="p-1.5 bg-orange-600 rounded-lg">
+            <MapPin className="h-4 w-4 text-white" />
+          </div>
+          <div>
+            <h1 className="font-bold text-sm text-gray-900">Explora Aventura</h1>
+            <p className="text-xs text-gray-600">Administrador</p>
+          </div>
+        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </Button>
+      </div>
 
       {/* Overlay do menu mobile */}
       <AnimatePresence>
@@ -83,16 +93,16 @@ export const AdminMobileNav: React.FC<MobileNavProps> = ({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: "-100%" }}
+            initial={{ x: "100%" }}
             animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
+            exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed left-0 top-0 h-full w-64 bg-white z-50 lg:hidden"
+            className="fixed right-0 top-0 h-full w-64 bg-white z-50 lg:hidden shadow-2xl"
           >
             <div className="p-6 h-full flex flex-col">
               {/* Logo */}
               <div className="flex items-center gap-2 mb-8">
-                <div className="p-2 bg-blue-600 rounded-lg">
+                <div className="p-2 bg-orange-600 rounded-lg">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
                 <div>

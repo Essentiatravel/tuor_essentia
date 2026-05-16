@@ -65,7 +65,7 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex flex-col lg:flex-row h-screen bg-gray-50 overflow-hidden">
       {/* Navegação mobile */}
       <AdminMobileNav
         userName={user?.nome || 'Administrador'}
