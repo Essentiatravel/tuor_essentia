@@ -74,6 +74,12 @@ export default function Header() {
           >
             Passeios
           </button>
+          <Link
+            href="/pacotes"
+            className="text-muted-foreground hover:text-foreground transition-colors font-medium text-orange-500 hover:text-orange-600"
+          >
+            Pacotes
+          </Link>
           <button
             onClick={() => scrollToSection('diferenciais')}
             className="text-muted-foreground hover:text-foreground transition-colors"
@@ -193,6 +199,14 @@ export default function Header() {
                   >
                     🎯 Passeios
                   </button>
+
+                  <Link
+                    href="/pacotes"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="w-full block text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
+                  >
+                    🎁 Pacotes Especiais
+                  </Link>
 
                   <button
                     onClick={() => {

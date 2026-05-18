@@ -14,7 +14,7 @@ const VoucherImpressao: React.FC<VoucherImpressaoProps> = ({ tarefa }) => {
             {/* Header */}
             <div className="flex justify-between items-start border-b-2 border-gray-800 pb-6 mb-8">
                 <div>
-                    <h1 className="text-3xl font-extrabold tracking-tighter text-orange-600 mb-1">EXPLORA AVENTURA CRM</h1>
+                    <h1 className="text-3xl font-extrabold tracking-tighter text-orange-600 mb-1">EXPLORA AVENTURA</h1>
                     <p className="text-sm text-gray-600 uppercase tracking-widest font-semibold">Ordem de Serviço / Voucher</p>
                 </div>
                 <div className="text-right">

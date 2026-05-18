@@ -83,7 +83,7 @@ function LoginForm() {
             <h1 className="text-3xl font-bold tracking-tight text-orange-600">EXPLORA AVENTURA</h1>
             <CardTitle className="text-xl text-gray-800">Acesse sua conta</CardTitle>
             <CardDescription className="text-gray-500">
-              Bem-vindo ao Explora Aventura CRM
+              Bem-vindo ao Explora Aventura
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-6 space-y-6">

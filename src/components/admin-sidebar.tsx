@@ -15,6 +15,7 @@ import {
   Home,
   User,
   Settings,
+  Layers,
 } from "lucide-react";
 import { usePathname } from 'next/navigation';
 
@@ -32,6 +33,7 @@ export const AdminSidebar: React.FC = () => {
     { icon: Home, label: "Hotéis", href: "/admin/hoteis" },
     { icon: MapPin, label: "Locais", href: "/admin/locais" },
     { icon: MapPin, label: "Passeios", href: "/admin/passeios" },
+    { icon: Layers, label: "Pacotes", href: "/admin/pacotes" },
     { icon: DollarSign, label: "Financeiro", href: "/admin/financeiro" },
     { icon: Settings, label: "Configurações", href: "/admin/configuracoes", adminOnly: true },
   ];
@@ -54,7 +56,7 @@ export const AdminSidebar: React.FC = () => {
             <MapPin className="h-5 w-5 text-white" />
           </div>
           <div className="min-w-0 flex-1">
-            <h1 className="font-bold text-base text-gray-900 truncate">Explora Aventura CRM</h1>
+            <h1 className="font-bold text-base text-gray-900 truncate">Explora Aventura</h1>
             <p className="text-xs text-gray-600 truncate">Administrador</p>
           </div>
         </div>

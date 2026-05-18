@@ -16,6 +16,7 @@ import {
   LogOut,
   User,
   Settings,
+  Layers,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -42,6 +43,7 @@ export const AdminMobileNav: React.FC<MobileNavProps> = ({
     { icon: Users, label: "Guias", href: "/admin/guias" },
     { icon: Heart, label: "Clientes", href: "/admin/clientes" },
     { icon: MapPin, label: "Passeios", href: "/admin/passeios" },
+    { icon: Layers, label: "Pacotes", href: "/admin/pacotes" },
     { icon: DollarSign, label: "Financeiro", href: "/admin/financeiro" },
     { icon: Settings, label: "Configurações", href: "/admin/configuracoes", adminOnly: true },
   ];
@@ -107,7 +109,7 @@ export const AdminMobileNav: React.FC<MobileNavProps> = ({
                 </div>
                 <div>
                   <h1 className="font-bold text-lg text-gray-900">
-                    Explora Aventura CRM
+                    Explora Aventura
                   </h1>
                   <p className="text-sm text-gray-600">Administrador</p>
                 </div>
