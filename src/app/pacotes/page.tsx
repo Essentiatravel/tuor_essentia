@@ -194,7 +194,7 @@ export default function PacotesPublicPage() {
                       </div>
 
                       <Link
-                        href={pkg.link}
+                        href={`/pacote/${pkg.id}`}
                         className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
                       >
                         Garantir este Pacote
