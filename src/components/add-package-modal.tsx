@@ -22,6 +22,7 @@ interface PackageData {
   descricao: string;
   link: string;
   imagem: string;
+  preco: number | string;
   passeios: string[]; // List of tour IDs
   ativo: boolean;
 }
@@ -42,6 +43,7 @@ export default function AddPackageModal({ isOpen, onClose, onSubmit, initialData
     descricao: "",
     link: "",
     imagem: "",
+    preco: "",
     passeios: [],
     ativo: true,
   });
@@ -74,13 +76,17 @@ export default function AddPackageModal({ isOpen, onClose, onSubmit, initialData
   // Sync initialData
   useEffect(() => {
     if (initialData && isEdit) {
-      setFormData(initialData);
+      setFormData({
+        ...initialData,
+        preco: initialData.preco !== undefined && initialData.preco !== null ? initialData.preco : "",
+      });
     } else if (!isEdit) {
       setFormData({
         nome: "",
         descricao: "",
         link: "",
         imagem: "",
+        preco: "",
         passeios: [],
         ativo: true,
       });
@@ -150,8 +156,8 @@ export default function AddPackageModal({ isOpen, onClose, onSubmit, initialData
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 gap-4">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="md:col-span-2">
               <Label htmlFor="nome">Nome do Pacote *</Label>
               <Input
                 id="nome"
@@ -169,6 +175,20 @@ export default function AddPackageModal({ isOpen, onClose, onSubmit, initialData
                 value={formData.link}
                 onChange={(e) => handleInputChange("link", e.target.value)}
                 placeholder="Ex: /checkout/pacote-aventura ou link do WhatsApp"
+                required
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="preco">Valor do Pacote (€) *</Label>
+              <Input
+                id="preco"
+                type="number"
+                step="0.01"
+                min="0"
+                value={formData.preco}
+                onChange={(e) => handleInputChange("preco", e.target.value)}
+                placeholder="Ex: 250.00"
                 required
               />
             </div>

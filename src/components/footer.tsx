@@ -60,6 +60,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/pacotes" className="text-gray-300 hover:text-orange-400 transition-colors">
+                  Pacotes Especiais
+                </Link>
+              </li>
+              <li>
                 <Link href="/#diferenciais" className="text-gray-300 hover:text-orange-400 transition-colors">
                   Por que nos escolher
                 </Link>

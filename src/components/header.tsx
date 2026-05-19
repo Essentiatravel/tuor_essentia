@@ -203,7 +203,7 @@ export default function Header() {
                   <Link
                     href="/pacotes"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="w-full block text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
+                    className="w-full block text-left py-3 px-4 rounded-lg bg-orange-50 text-orange-600 hover:bg-orange-100 transition-colors font-medium"
                   >
                     🎁 Pacotes Especiais
                   </Link>

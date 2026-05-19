@@ -23,6 +23,7 @@ async function migrate() {
         descricao TEXT,
         link VARCHAR(255),
         imagem VARCHAR(255),
+        preco NUMERIC(10, 2) DEFAULT 0.00,
         passeios JSONB DEFAULT '[]'::jsonb,
         ativo BOOLEAN DEFAULT true,
         criado_em TIMESTAMP DEFAULT NOW(),

@@ -31,6 +31,7 @@ export async function GET() {
         descricao: p.descricao,
         link: p.link,
         imagem: p.imagem,
+        preco: p.preco !== null && p.preco !== undefined ? Number(p.preco) : 0,
         passeios: ensureArray(p.passeios),
         ativo: p.ativo,
         criadoEm: p.criado_em,
@@ -55,17 +56,18 @@ export async function POST(request: Request) {
     const descricao = pacoteData.descricao || "";
     const link = pacoteData.link || "";
     const imagem = pacoteData.imagem || "";
+    const preco = parseFloat(pacoteData.preco) || 0;
     const passeios = JSON.stringify(pacoteData.passeios || []);
     const ativo = pacoteData.ativo !== undefined ? pacoteData.ativo : true;
 
     console.log('📝 Tentando inserir pacote no banco:', {
-      id: novoPacoteId, nome, link
+      id: novoPacoteId, nome, link, preco
     });
 
     const insertQuery = `
       INSERT INTO pacotes 
-      (id, nome, descricao, link, imagem, passeios, ativo, criado_em, atualizado_em)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, NOW(), NOW())
+      (id, nome, descricao, link, imagem, preco, passeios, ativo, criado_em, atualizado_em)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW(), NOW())
       RETURNING *
     `;
 
@@ -75,6 +77,7 @@ export async function POST(request: Request) {
       descricao,
       link,
       imagem,
+      preco,
       passeios,
       ativo
     ]);
@@ -87,6 +90,7 @@ export async function POST(request: Request) {
       message: 'Pacote criado com sucesso',
       pacote: {
         ...novoPacote,
+        preco: novoPacote.preco !== null && novoPacote.preco !== undefined ? Number(novoPacote.preco) : 0,
         criadoEm: novoPacote.criado_em,
         atualizadoEm: novoPacote.atualizado_em,
         passeios: ensureArray(novoPacote.passeios)
@@ -101,7 +105,7 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     const pacoteData = await request.json();
-    const { id, nome, descricao, link, imagem, passeios, ativo } = pacoteData;
+    const { id, nome, descricao, link, imagem, preco, passeios, ativo } = pacoteData;
     
     if (!id) {
       return NextResponse.json({ error: 'ID do pacote é obrigatório' }, { status: 400 });
@@ -109,8 +113,8 @@ export async function PUT(request: Request) {
 
     const updateQuery = `
       UPDATE pacotes
-      SET nome = $1, descricao = $2, link = $3, imagem = $4, passeios = $5, ativo = $6, atualizado_em = NOW()
-      WHERE id = $7
+      SET nome = $1, descricao = $2, link = $3, imagem = $4, preco = $5, passeios = $6, ativo = $7, atualizado_em = NOW()
+      WHERE id = $8
       RETURNING *
     `;
 
@@ -119,6 +123,7 @@ export async function PUT(request: Request) {
       descricao,
       link,
       imagem,
+      parseFloat(preco) || 0,
       JSON.stringify(passeios || []),
       ativo !== undefined ? ativo : true,
       id

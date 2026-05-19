@@ -26,6 +26,7 @@ interface Package {
   descricao: string;
   link: string;
   imagem: string;
+  preco: number;
   passeios: string[];
   ativo: boolean;
   criadoEm: string;
@@ -227,6 +228,9 @@ export default function ManagePackagesPage() {
                       Passeios Vinculados
                     </th>
                     <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                      Valor
+                    </th>
+                    <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       Link / CTA
                     </th>
                     <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
@@ -274,6 +278,11 @@ export default function ManagePackagesPage() {
                             <span className="text-xs text-gray-400 font-medium">Nenhum passeio vinculado</span>
                           )}
                         </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="font-semibold text-orange-600 text-sm">
+                          € {Number(pkg.preco || 0).toFixed(2)}
+                        </span>
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-1.5 text-sm text-gray-600">

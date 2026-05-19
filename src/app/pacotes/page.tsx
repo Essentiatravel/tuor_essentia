@@ -12,6 +12,7 @@ interface Package {
   descricao: string;
   link: string;
   imagem: string;
+  preco: number;
   passeios: string[];
   ativo: boolean;
 }
@@ -185,14 +186,12 @@ export default function PacotesPublicPage() {
                     </div>
 
                     <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col gap-4">
-                      {totalRegularPrice > 0 && (
-                        <div className="flex items-baseline justify-between">
-                          <span className="text-xs text-gray-400 font-semibold uppercase">Valor dos passeios:</span>
-                          <span className="text-lg font-bold text-orange-600">
-                            € {totalRegularPrice.toFixed(2)}
-                          </span>
-                        </div>
-                      )}
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-xs text-gray-400 font-semibold uppercase">Valor do Pacote:</span>
+                        <span className="text-lg font-bold text-orange-600">
+                          € {Number(pkg.preco || 0).toFixed(2)}
+                        </span>
+                      </div>
 
                       <Link
                         href={pkg.link}

@@ -17,6 +17,7 @@ import {
   MapPin,
   ChevronRight,
   TrendingUp,
+  Layers,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import AddTourModal from "./add-tour-modal";
@@ -135,25 +136,31 @@ const quickActions: QuickAction[] = [
     title: "Nova Tarefa",
     icon: <Plus className="h-4 w-4" />,
     color: "bg-orange-500 hover:bg-orange-600",
-    href: "/agendamentos/nova",
+    href: "/admin/agendamentos",
   },
   {
     title: "Ver Agendamentos",
     icon: <Calendar className="h-4 w-4" />,
     color: "bg-blue-500 hover:bg-blue-600",
-    href: "/agendamentos",
+    href: "/admin/agendamentos",
   },
   {
     title: "Gerenciar Guias",
     icon: <Users className="h-4 w-4" />,
     color: "bg-gray-500 hover:bg-gray-600",
-    href: "/guias",
+    href: "/admin/guias",
+  },
+  {
+    title: "Gerenciar Pacotes",
+    icon: <Layers className="h-4 w-4" />,
+    color: "bg-orange-600 hover:bg-orange-700",
+    href: "/admin/pacotes",
   },
   {
     title: "Cadastrar Passeio",
     icon: <MapPin className="h-4 w-4" />,
     color: "bg-gray-500 hover:bg-gray-600",
-    href: "/passeios/novo",
+    href: "/admin/passeios",
   },
   {
     title: "Relatório Financeiro",
