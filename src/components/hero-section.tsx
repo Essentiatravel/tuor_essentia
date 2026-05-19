@@ -45,7 +45,7 @@ export default function HeroSection() {
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
               onClick={() => {
                 window.location.hash = "passeios";
-                document.getElementById("destinos")?.scrollIntoView({ behavior: "smooth" });
+                document.getElementById("explorar")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               Sua Aventura Começa Aqui!

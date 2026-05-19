@@ -19,8 +19,8 @@ export default function Header() {
       return;
     }
 
-    // Dispara a mudança de aba para o componente Destinations
-    if (sectionId === 'destinos' || sectionId === 'passeios') {
+    // Dispara a mudança de aba para o componente Explorar
+    if (sectionId === 'explorar' || sectionId === 'passeios' || sectionId === 'pacotes') {
       const event = new HashChangeEvent('hashchange');
       window.location.hash = sectionId;
       window.dispatchEvent(event);
@@ -40,7 +40,7 @@ export default function Header() {
       router.push("/#passeios");
     } else {
       window.location.hash = "passeios";
-      document.getElementById("destinos")?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("explorar")?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -61,12 +61,6 @@ export default function Header() {
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Roteiros
-          </button>
-          <button
-            onClick={() => scrollToSection('destinos')}
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Destinos
           </button>
           <button
             onClick={scrollToPasseios}
@@ -178,16 +172,6 @@ export default function Header() {
                     className="w-full text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
                   >
                     🗺️ Roteiros
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      scrollToSection('destinos');
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="w-full text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
-                  >
-                    🏝️ Destinos
                   </button>
 
                   <button
