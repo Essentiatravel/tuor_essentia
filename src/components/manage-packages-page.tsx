@@ -231,9 +231,6 @@ export default function ManagePackagesPage() {
                       Valor
                     </th>
                     <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Link / CTA
-                    </th>
-                    <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       Status
                     </th>
                     <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">
@@ -283,12 +280,6 @@ export default function ManagePackagesPage() {
                         <span className="font-semibold text-orange-600 text-sm">
                           € {Number(pkg.preco || 0).toFixed(2)}
                         </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-1.5 text-sm text-gray-600">
-                          <LinkIcon className="h-3.5 w-3.5 text-gray-400" />
-                          <span className="truncate max-w-[150px] font-mono text-xs">{pkg.link}</span>
-                        </div>
                       </td>
                       <td className="px-6 py-4">
                         <Badge

@@ -169,19 +169,7 @@ export default function AddPackageModal({ isOpen, onClose, onSubmit, initialData
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="link" className="text-sm font-semibold mb-1.5 block">Link Personalizado / CTA *</Label>
-              <Input
-                id="link"
-                value={formData.link}
-                onChange={(e) => handleInputChange("link", e.target.value)}
-                placeholder="Ex: /checkout/pacote-aventura"
-                required
-                className="h-11"
-              />
-            </div>
-
-            <div className="space-y-2">
+            <div className="md:col-span-2 space-y-2">
               <Label htmlFor="preco" className="text-sm font-semibold mb-1.5 block">Valor do Pacote (€) *</Label>
               <Input
                 id="preco"
