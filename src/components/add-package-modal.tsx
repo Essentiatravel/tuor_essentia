@@ -156,31 +156,33 @@ export default function AddPackageModal({ isOpen, onClose, onSubmit, initialData
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="md:col-span-2">
-              <Label htmlFor="nome">Nome do Pacote *</Label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="md:col-span-2 space-y-2">
+              <Label htmlFor="nome" className="text-sm font-semibold mb-1.5 block">Nome do Pacote *</Label>
               <Input
                 id="nome"
                 value={formData.nome}
                 onChange={(e) => handleInputChange("nome", e.target.value)}
                 placeholder="Ex: Combo Aventura Total"
                 required
+                className="h-11"
               />
             </div>
 
-            <div>
-              <Label htmlFor="link">Link Personalizado / CTA *</Label>
+            <div className="space-y-2">
+              <Label htmlFor="link" className="text-sm font-semibold mb-1.5 block">Link Personalizado / CTA *</Label>
               <Input
                 id="link"
                 value={formData.link}
                 onChange={(e) => handleInputChange("link", e.target.value)}
-                placeholder="Ex: /checkout/pacote-aventura ou link do WhatsApp"
+                placeholder="Ex: /checkout/pacote-aventura"
                 required
+                className="h-11"
               />
             </div>
 
-            <div>
-              <Label htmlFor="preco">Valor do Pacote (€) *</Label>
+            <div className="space-y-2">
+              <Label htmlFor="preco" className="text-sm font-semibold mb-1.5 block">Valor do Pacote (€) *</Label>
               <Input
                 id="preco"
                 type="number"
@@ -190,18 +192,20 @@ export default function AddPackageModal({ isOpen, onClose, onSubmit, initialData
                 onChange={(e) => handleInputChange("preco", e.target.value)}
                 placeholder="Ex: 250.00"
                 required
+                className="h-11 border-orange-200 focus:border-orange-500"
               />
             </div>
           </div>
 
-          <div>
-            <Label htmlFor="descricao">Descrição do Pacote</Label>
+          <div className="space-y-2">
+            <Label htmlFor="descricao" className="text-sm font-semibold mb-1.5 block">Descrição do Pacote</Label>
             <Textarea
               id="descricao"
               value={formData.descricao}
               onChange={(e) => handleInputChange("descricao", e.target.value)}
               placeholder="Descreva o que está incluído no pacote, vantagens, etc."
               rows={4}
+              className="resize-none"
             />
           </div>
 
