@@ -125,6 +125,10 @@ export default function Footer() {
                     <span className="font-semibold block text-orange-400 text-xs">Suíça:</span>
                     Rue des Bossons 4, 1213 Genève
                   </div>
+                  <div>
+                    <span className="font-semibold block text-orange-400 text-xs">Portugal:</span>
+                    R. da Fonte de Prata 38, Amora, Portugal
+                  </div>
                 </div>
               </div>
             </div>
