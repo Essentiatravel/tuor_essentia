@@ -48,7 +48,7 @@ export default function AboutUs() {
             <div className="space-y-4">
               <div className="rounded-3xl overflow-hidden shadow-lg h-64 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="/uploads/real-1.jpg" 
+                  src="/about/real-1.jpg" 
                   alt="Clientes Explora Aventura em Passeio de Barco" 
                   className="w-full h-full object-cover"
                 />
@@ -65,14 +65,14 @@ export default function AboutUs() {
             <div className="space-y-4 pt-8">
               <div className="rounded-3xl overflow-hidden shadow-lg h-44 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="/uploads/real-3.jpg" 
+                  src="/about/real-3.jpg" 
                   alt="Breathtaking Pico Cão Grande volcanic needle" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg h-64 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="/uploads/real-2.jpg" 
+                  src="/about/real-2.jpg" 
                   alt="Grupo de Clientes no Pico Cão Grande com Guia" 
                   className="w-full h-full object-cover"
                 />
