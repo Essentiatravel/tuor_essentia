@@ -2,7 +2,7 @@
 import { Button } from "./ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
-import { User, LogOut, Menu, X } from "lucide-react";
+import { User, LogOut, Menu, X, Phone, Mail, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
@@ -46,6 +46,32 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+      {/* Top Banner Contact Details */}
+      <div className="bg-orange-600 text-white py-2 text-xs font-semibold select-none hidden md:block border-b border-orange-500/20">
+        <div className="container mx-auto px-4 flex justify-between items-center max-w-full">
+          <div className="flex gap-5">
+            <span className="flex items-center gap-1.5 hover:text-orange-100 transition-colors">
+              <Phone className="w-3.5 h-3.5" /> +239 990 0000
+            </span>
+            <span className="flex items-center gap-1.5 hover:text-orange-100 transition-colors">
+              <Mail className="w-3.5 h-3.5" /> contact@explora-aventura.com
+            </span>
+          </div>
+          <div className="flex gap-5 items-center">
+            <a 
+              href="https://wa.me/2399900000" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
+            >
+              <MessageCircle className="w-4 h-4 fill-white text-orange-600 animate-pulse" /> Fale no WhatsApp
+            </a>
+            <span className="text-orange-200">|</span>
+            <span>📍 Av. Marginal 12 de Julho, São Tomé</span>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-full">
         <div className="flex items-center">
           <Link href="/">

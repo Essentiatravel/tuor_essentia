@@ -27,7 +27,7 @@ export default function HeaderWrapper() {
   return (
     <>
       <Header />
-      <div className="pt-20" />
+      <div className="pt-20 md:pt-[116px]" />
     </>
   );
 }

@@ -7,6 +7,7 @@ import HeroSection from "@/components/hero-section";
 import ExperienceTypes from "@/components/experience-types";
 import Destinations from "@/components/destinations";
 import Differentials from "@/components/differentials";
+import AboutUs from "@/components/about-us";
 import Testimonials from "@/components/testimonials";
 import Footer from "@/components/footer";
 
@@ -43,6 +44,7 @@ export default function Home() {
       <ExperienceTypes />
       <Destinations />
       <Differentials />
+      <AboutUs />
       <Testimonials />
       <Footer />
     </main>
