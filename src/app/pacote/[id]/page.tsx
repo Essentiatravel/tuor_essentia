@@ -1,6 +1,6 @@
 "use client";
 export const dynamic = "force-dynamic";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { formatCurrency, useIsClient } from "@/lib/format-utils";
 import { useParams, useRouter } from "next/navigation";
@@ -59,6 +59,28 @@ interface Tour {
   imagens: string[];
   inclusoes: string[];
 }
+const CALENDAR_CLASSNAMES = {
+  months: "space-y-4",
+  month: "space-y-4",
+  caption: "flex justify-center pt-1 relative items-center text-sm font-semibold",
+  caption_label: "text-sm font-bold text-gray-900",
+  nav: "space-x-1 flex items-center",
+  nav_button: "h-7 w-7 bg-transparent p-0 opacity-70 hover:opacity-100 hover:bg-orange-100 rounded-md",
+  nav_button_previous: "absolute left-1",
+  nav_button_next: "absolute right-1",
+  table: "w-full border-collapse space-y-1",
+  head_row: "flex",
+  head_cell: "text-gray-600 rounded-md w-9 font-medium text-xs text-center",
+  row: "flex w-full mt-2",
+  cell: "h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected])]:bg-orange-100 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+  day: "h-9 w-9 p-0 font-normal aria-selected:opacity-100 hover:bg-orange-100 rounded-md transition-colors",
+  day_selected: "bg-orange-500 text-white hover:bg-orange-600 hover:text-white focus:bg-orange-600 focus:text-white font-semibold",
+  day_today: "bg-orange-100 text-orange-900 font-semibold",
+  day_outside: "text-gray-400 opacity-50",
+  day_disabled: "text-gray-400 opacity-50 cursor-not-allowed",
+  day_range_middle: "aria-selected:bg-orange-100 aria-selected:text-orange-900",
+  day_hidden: "invisible",
+};
 
 export default function PacoteDetalhes() {
   const params = useParams();
@@ -68,6 +90,29 @@ export default function PacoteDetalhes() {
   const [linkedTours, setLinkedTours] = useState<Tour[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState<Date>();
+  const [isRoundTrip, setIsRoundTrip] = useState(false);
+  const [selectedReturnDate, setSelectedReturnDate] = useState<Date>();
+  const [isDepartureOpen, setIsDepartureOpen] = useState(false);
+  const [isReturnOpen, setIsReturnOpen] = useState(false);
+
+  // Otimizar a desativação de datas passadas para evitar recriação de Date em cada render de célula
+  const disablePastDates = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return (date: Date) => date < today;
+  }, []);
+
+  // Otimizar a desativação de datas de volta
+  const disableReturnDates = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return (date: Date) => {
+      if (selectedDate) {
+        return date < selectedDate;
+      }
+      return date < today;
+    };
+  }, [selectedDate]);
   const [selectedPeople, setSelectedPeople] = useState(1);
   const [isGroup, setIsGroup] = useState(false);
   const [customerInfo, setCustomerInfo] = useState({
@@ -119,8 +164,18 @@ export default function PacoteDetalhes() {
       return;
     }
 
+    if (isRoundTrip && !selectedReturnDate) {
+      alert("Por favor, selecione a data de volta para o pacote ida e volta.");
+      return;
+    }
+
     setProcessing(true);
     try {
+      // Formatar observações com informações de ida e volta se selecionado
+      const observacoesFormatadas = isRoundTrip
+        ? `[TIPO DE PACOTE: Ida e Volta (Com Voos)]\n[Data de Ida: ${format(selectedDate, "dd/MM/yyyy")}]\n[Data de Volta: ${format(selectedReturnDate!, "dd/MM/yyyy")}]\n\nObservações: ${customerInfo.observacoes}`
+        : `[TIPO DE PACOTE: Somente Ida / Terrestre]\n[Data de Ida: ${format(selectedDate, "dd/MM/yyyy")}]\n\nObservações: ${customerInfo.observacoes}`;
+
       // Fluxo de Lead: Envia para /api/leads
       const response = await fetch('/api/leads', {
         method: 'POST',
@@ -133,7 +188,7 @@ export default function PacoteDetalhes() {
           passeioNome: `[PACOTE] ${pacote?.nome}`, // Identificamos que é um pacote
           data: selectedDate,
           pessoas: selectedPeople,
-          observacoes: customerInfo.observacoes
+          observacoes: observacoesFormatadas
         }),
       });
 
@@ -364,10 +419,48 @@ export default function PacoteDetalhes() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
-                {/* Seleção de data */}
+                {/* Tipo de Viagem (Ida e Volta vs Apenas Início) */}
+                <div className="space-y-2">
+                  <Label className="text-sm font-semibold text-gray-900">Tipo de Viagem</Label>
+                  <div className="grid grid-cols-2 gap-2 mt-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsRoundTrip(false);
+                        setSelectedReturnDate(undefined);
+                      }}
+                      className={cn(
+                        "flex flex-col items-center justify-center p-3 rounded-xl border-2 text-center transition-all duration-200",
+                        !isRoundTrip
+                          ? "border-orange-500 bg-orange-50/50 text-orange-950 font-semibold shadow-sm"
+                          : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+                      )}
+                    >
+                      <span className="text-sm">Somente Ida / Início</span>
+                      <span className="text-[10px] text-gray-500 font-normal">Apenas Terrestre</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setIsRoundTrip(true)}
+                      className={cn(
+                        "flex flex-col items-center justify-center p-3 rounded-xl border-2 text-center transition-all duration-200",
+                        isRoundTrip
+                          ? "border-orange-500 bg-orange-50/50 text-orange-950 font-semibold shadow-sm"
+                          : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+                      )}
+                    >
+                      <span className="text-sm">Ida e Volta</span>
+                      <span className="text-[10px] text-green-600 font-semibold">Com Opção de Voo</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Seleção de data de Ida / Início */}
                 <div>
-                  <Label htmlFor="date" className="text-base font-semibold text-gray-900">Data sugerida de início *</Label>
-                  <Popover>
+                  <Label htmlFor="date" className="text-sm font-semibold text-gray-900">
+                    {isRoundTrip ? "Data sugerida de Ida *" : "Data sugerida de início *"}
+                  </Label>
+                  <Popover open={isDepartureOpen} onOpenChange={setIsDepartureOpen}>
                     <PopoverTrigger asChild>
                       <Button
                         variant="outline"
@@ -383,52 +476,91 @@ export default function PacoteDetalhes() {
                             {isClient ? format(selectedDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR }) : 'Data selecionada'}
                           </span>
                         ) : (
-                          <span className="text-gray-500">Selecione uma data</span>
+                          <span className="text-gray-500">Selecione a data de ida</span>
                         )}
                       </Button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0 border-2 border-orange-200 shadow-lg" align="start">
+                    <PopoverContent className="w-auto p-0 border-2 border-orange-200 shadow-lg" align="start" side="bottom" sideOffset={4}>
                       <div className="bg-white rounded-lg overflow-hidden">
-                        <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4">
-                          <h3 className="font-semibold text-lg">Início da sua Experiência</h3>
-                          <p className="text-orange-100 text-sm">Nossos consultores agendarão os passeios com você</p>
+                        <div className="bg-orange-50 text-orange-900 px-4 py-2 border-b border-orange-100 text-xs font-semibold uppercase tracking-wider text-center">
+                          {isRoundTrip ? "Selecione a Data de Ida" : "Selecione a Data de Início"}
                         </div>
-                        <div className="p-4">
+                        <div className="p-3">
                           <Calendar
                             mode="single"
                             selected={selectedDate}
-                            onSelect={setSelectedDate}
-                            disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                            onSelect={(date) => {
+                              setSelectedDate(date);
+                              setIsDepartureOpen(false); // Fecha o popover imediatamente ao selecionar
+                              if (selectedReturnDate && date && selectedReturnDate < date) {
+                                setSelectedReturnDate(undefined);
+                              }
+                            }}
+                            disabled={disablePastDates}
                             initialFocus
                             className="rounded-md border-0"
-                            classNames={{
-                              months: "space-y-4",
-                              month: "space-y-4",
-                              caption: "flex justify-center pt-1 relative items-center text-lg font-semibold",
-                              caption_label: "text-lg font-bold text-gray-900",
-                              nav: "space-x-1 flex items-center",
-                              nav_button: "h-8 w-8 bg-transparent p-0 opacity-70 hover:opacity-100 hover:bg-orange-100 rounded-md",
-                              nav_button_previous: "absolute left-1",
-                              nav_button_next: "absolute right-1",
-                              table: "w-full border-collapse space-y-1",
-                              head_row: "flex",
-                              head_cell: "text-gray-600 rounded-md w-10 font-medium text-sm text-center",
-                              row: "flex w-full mt-2",
-                              cell: "h-10 w-10 text-center text-sm p-0 relative [&:has([aria-selected])]:bg-orange-100 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-                              day: "h-10 w-10 p-0 font-normal aria-selected:opacity-100 hover:bg-orange-100 rounded-md transition-colors",
-                              day_selected: "bg-orange-500 text-white hover:bg-orange-600 hover:text-white focus:bg-orange-600 focus:text-white font-semibold",
-                              day_today: "bg-orange-100 text-orange-900 font-semibold",
-                              day_outside: "text-gray-400 opacity-50",
-                              day_disabled: "text-gray-400 opacity-50 cursor-not-allowed",
-                              day_range_middle: "aria-selected:bg-orange-100 aria-selected:text-orange-900",
-                              day_hidden: "invisible",
-                            }}
+                            classNames={CALENDAR_CLASSNAMES}
                           />
                         </div>
                       </div>
                     </PopoverContent>
                   </Popover>
                 </div>
+
+                {/* Seleção de data de Volta (Apenas se for Round Trip) */}
+                {isRoundTrip && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="space-y-1"
+                  >
+                    <Label htmlFor="returnDate" className="text-sm font-semibold text-gray-900">
+                      Data sugerida de Volta *
+                    </Label>
+                    <Popover open={isReturnOpen} onOpenChange={setIsReturnOpen}>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full justify-start text-left font-normal mt-2 h-12 border-2 hover:border-orange-300",
+                            !selectedReturnDate && "text-muted-foreground border-gray-200",
+                            selectedReturnDate && "border-orange-200 bg-orange-50"
+                          )}
+                        >
+                          <CalendarIcon className="mr-3 h-5 w-5 text-orange-500" />
+                          {selectedReturnDate ? (
+                            <span className="text-gray-900 font-medium">
+                              {isClient ? format(selectedReturnDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR }) : 'Data selecionada'}
+                            </span>
+                          ) : (
+                            <span className="text-gray-500">Selecione a data de volta</span>
+                          )}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0 border-2 border-orange-200 shadow-lg" align="start" side="bottom" sideOffset={4}>
+                        <div className="bg-white rounded-lg overflow-hidden">
+                          <div className="bg-orange-50 text-orange-900 px-4 py-2 border-b border-orange-100 text-xs font-semibold uppercase tracking-wider text-center">
+                            Selecione a Data de Volta
+                          </div>
+                          <div className="p-3">
+                            <Calendar
+                              mode="single"
+                              selected={selectedReturnDate}
+                              onSelect={(date) => {
+                                setSelectedReturnDate(date);
+                                setIsReturnOpen(false); // Fecha o popover imediatamente ao selecionar
+                              }}
+                              disabled={disableReturnDates}
+                              initialFocus
+                              className="rounded-md border-0"
+                              classNames={CALENDAR_CLASSNAMES}
+                            />
+                          </div>
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  </motion.div>
+                )}
 
                 {/* Número de pessoas */}
                 <div>
@@ -514,6 +646,18 @@ export default function PacoteDetalhes() {
                 <div className="border-t pt-4">
                   <h5 className="font-semibold text-gray-900 mb-3">Resumo do Pacote</h5>
                   <div className="space-y-3 text-sm bg-gray-50 rounded-lg p-4">
+                    {selectedDate && (
+                      <div className="flex justify-between items-center text-xs text-gray-500 border-b border-gray-100 pb-2">
+                        <span>Data de Ida:</span>
+                        <span className="font-medium">{format(selectedDate, "dd/MM/yyyy")}</span>
+                      </div>
+                    )}
+                    {isRoundTrip && selectedReturnDate && (
+                      <div className="flex justify-between items-center text-xs text-gray-500 border-b border-gray-100 pb-2">
+                        <span>Data de Volta:</span>
+                        <span className="font-medium">{format(selectedReturnDate, "dd/MM/yyyy")}</span>
+                      </div>
+                    )}
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600">{formatCurrency(pacote.preco)} × {selectedPeople} {selectedPeople === 1 ? 'pessoa' : 'pessoas'}</span>
                       <span className="font-medium">{formatCurrency(valorTotal)}</span>
