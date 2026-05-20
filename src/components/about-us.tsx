@@ -96,10 +96,10 @@ export default function AboutUs() {
             </h2>
             <div className="space-y-5 text-gray-600 leading-relaxed text-base md:text-lg">
               <p>
-                A <strong>EXPLORA AVENTURA</strong> nasceu em 2018 com o propósito claro de conectar viajantes do mundo inteiro à alma intocada e selvagem de São Tomé e Príncipe. Não vendemos apenas passeios; criamos expedições marcantes e totalmente personalizadas.
+                A <strong>EXPLORA AVENTURA</strong> nasceu em 2018 com o propósito claro de conectar viajantes do mundo inteiro à alma intocada e selvagem de São Tomé e Príncipe. Para garantir um atendimento próximo, seguro e de padrão internacional, contamos desde o início em 2018 com colaboradores dedicados e altamente qualificados em <strong>Portugal, São Tomé e na Suíça</strong>. Não vendemos apenas passeios; criamos expedições marcantes e totalmente personalizadas.
               </p>
               <p>
-                Fundada por profissionais do turismo e guias locais experientes, nossa agência é oficialmente registrada e sediada na **Avenida Marginal 12 de Julho, em São Tomé**. Acreditamos no turismo de impacto positivo, onde cada visitante contribui para o sustento de famílias locais e a preservação do estilo de vida <em>"Leve Leve"</em> das nossas ilhas.
+                Fundada por profissionais do turismo e guias locais experientes, nossa agência é oficialmente registrada e sediada na **Avenida Marginal 12 de Julho, em São Tomé**. Acreditamos no turismo de impacto positivo, onde cada visitante contribui diretamente para o sustento de famílias locais e para a preservação do estilo de vida <em>"Leve Leve"</em> das nossas ilhas, contando com o suporte contínuo da nossa equipa global.
               </p>
               <p className="font-medium text-gray-800 italic border-l-4 border-orange-500 pl-4 py-1.5">
                 "Conduzimos você com segurança pelos trilhos mais secretos, pelas roças históricas de cacau e café, e pelas praias douradas mais paradisíacas do Atlântico."
