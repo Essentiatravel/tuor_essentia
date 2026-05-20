@@ -40,7 +40,7 @@ export async function GET(
       return NextResponse.json({ error: 'Passeio não encontrado' }, { status: 404 });
     }
 
-    const precoFinal = passeio.preco_real !== undefined ? passeio.preco_real : (passeio.preco || 0);
+    const precoFinal = (passeio.preco_real !== null && passeio.preco_real !== undefined) ? passeio.preco_real : (passeio.preco || 0);
 
     const passeioFormatado = {
       id: passeio.id,
@@ -93,10 +93,15 @@ export async function PUT(
       values.push(val);
     };
 
+    const parseSafeFloat = (val: any) => {
+      const parsed = parseFloat(val);
+      return isNaN(parsed) ? null : parsed;
+    };
+
     // Mapping logic
     if (passeioData.name || passeioData.nome) addField('nome', passeioData.name || passeioData.nome);
     if (passeioData.description || passeioData.descricao) addField('descricao', passeioData.description || passeioData.descricao);
-    if (passeioData.price || passeioData.preco) addField('preco', parseFloat(passeioData.price || passeioData.preco) || 0);
+    if (passeioData.price || passeioData.preco) addField('preco', parseSafeFloat(passeioData.price || passeioData.preco) || 0);
     if (passeioData.duration || passeioData.duracao) addField('duracao', passeioData.duration ? `${passeioData.duration}h` : (passeioData.duracao || ""));
     if (passeioData.type || passeioData.categoria) addField('categoria', passeioData.type || passeioData.categoria);
     if (passeioData.images || passeioData.imagens) addField('imagens', JSON.stringify(passeioData.images || passeioData.imagens || []));
@@ -104,11 +109,11 @@ export async function PUT(
     if (passeioData.languages || passeioData.idiomas) addField('idiomas', JSON.stringify(passeioData.languages || passeioData.idiomas || []));
     if (passeioData.maxPeople || passeioData.capacidadeMaxima) addField('capacidade_maxima', parseInt(passeioData.maxPeople || passeioData.capacidadeMaxima) || 20);
 
-    if (passeioData.tarifa2Pessoas !== undefined) addField('tarifa_2_pessoas', parseFloat(passeioData.tarifa2Pessoas) || null);
-    if (passeioData.tarifa4Pessoas !== undefined) addField('tarifa_4_pessoas', parseFloat(passeioData.tarifa4Pessoas) || null);
-    if (passeioData.tarifa6Pessoas !== undefined) addField('tarifa_6_pessoas', parseFloat(passeioData.tarifa6Pessoas) || null);
-    if (passeioData.tarifa8Pessoas !== undefined) addField('tarifa_8_pessoas', parseFloat(passeioData.tarifa8Pessoas) || null);
-    if (passeioData.tarifa10Pessoas !== undefined) addField('tarifa_10_pessoas', parseFloat(passeioData.tarifa10Pessoas) || null);
+    if (passeioData.tarifa2Pessoas !== undefined) addField('tarifa_2_pessoas', parseSafeFloat(passeioData.tarifa2Pessoas));
+    if (passeioData.tarifa4Pessoas !== undefined) addField('tarifa_4_pessoas', parseSafeFloat(passeioData.tarifa4Pessoas));
+    if (passeioData.tarifa6Pessoas !== undefined) addField('tarifa_6_pessoas', parseSafeFloat(passeioData.tarifa6Pessoas));
+    if (passeioData.tarifa8Pessoas !== undefined) addField('tarifa_8_pessoas', parseSafeFloat(passeioData.tarifa8Pessoas));
+    if (passeioData.tarifa10Pessoas !== undefined) addField('tarifa_10_pessoas', parseSafeFloat(passeioData.tarifa10Pessoas));
     if (passeioData.sobConsultaTexto !== undefined) addField('sob_consulta_texto', passeioData.sobConsultaTexto || null);
 
     // Status check

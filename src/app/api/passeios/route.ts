@@ -34,7 +34,8 @@ export async function GET() {
 
     const passeiosFormatados = todosPasseios.map((p) => {
       // Use preco_real if preco is missing (Database alignment)
-      const precoFinal = p.preco_real !== undefined ? p.preco_real : (p.preco || 0);
+      // p.preco_real can be null from DB, so we check for both null and undefined
+      const precoFinal = (p.preco_real !== null && p.preco_real !== undefined) ? p.preco_real : (p.preco || 0);
 
       return {
         id: p.id,
@@ -79,7 +80,12 @@ export async function POST(request: Request) {
     // Construct values
     const nome = passeioData.name || passeioData.nome || "Passeio sem nome";
     const descricao = passeioData.description || passeioData.descricao || "Descrição não informada";
-    const preco = parseFloat(passeioData.price || passeioData.preco) || 0;
+    const parseSafeFloat = (val: any) => {
+      const parsed = parseFloat(val);
+      return isNaN(parsed) ? null : parsed;
+    };
+
+    const preco = parseSafeFloat(passeioData.price || passeioData.preco) || 0;
     const duracao = passeioData.duration ? `${passeioData.duration}h` : (passeioData.duracao || "Desconhecida");
     const categoria = passeioData.type || passeioData.categoria || "Geral";
     const imagens = JSON.stringify(passeioData.images || []);
@@ -111,11 +117,11 @@ export async function POST(request: Request) {
       idiomas,
       capacidadeMaxima,
       1,
-      parseFloat(passeioData.tarifa2Pessoas) || null,
-      parseFloat(passeioData.tarifa4Pessoas) || null,
-      parseFloat(passeioData.tarifa6Pessoas) || null,
-      parseFloat(passeioData.tarifa8Pessoas) || null,
-      parseFloat(passeioData.tarifa10Pessoas) || null,
+      parseSafeFloat(passeioData.tarifa2Pessoas),
+      parseSafeFloat(passeioData.tarifa4Pessoas),
+      parseSafeFloat(passeioData.tarifa6Pessoas),
+      parseSafeFloat(passeioData.tarifa8Pessoas),
+      parseSafeFloat(passeioData.tarifa10Pessoas),
       passeioData.sobConsultaTexto || null
     ]);
 
