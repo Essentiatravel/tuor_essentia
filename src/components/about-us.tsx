@@ -55,8 +55,8 @@ export default function AboutUs() {
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg h-44 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=400&h=300&q=80" 
-                  alt="Praias Paradisíacas de São Tomé" 
+                  src="/about/real-4.jpg" 
+                  alt="Guia Local e Cliente Feliz em São Tomé" 
                   className="w-full h-full object-cover"
                 />
               </div>
