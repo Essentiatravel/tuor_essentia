@@ -143,7 +143,7 @@ export default function AddPackageModal({ isOpen, onClose, onSubmit, initialData
   return (
     <div className="fixed inset-0 bg-gray-900/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-gray-200">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center pb-4 mb-6 border-b border-gray-100">
           <h2 className="text-xl font-bold text-gray-900">{isEdit ? "Editar Pacote" : "Criar Novo Pacote"}</h2>
           <Button
             variant="ghost"

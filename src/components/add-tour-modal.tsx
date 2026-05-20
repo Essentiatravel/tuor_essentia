@@ -184,7 +184,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
   return (
     <div className="fixed inset-0 bg-gray-900/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-gray-200">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center pb-4 mb-6 border-b border-gray-100">
           <h2 className="text-xl font-bold text-gray-900">{isEdit ? "Editar Passeio" : "Criar Novo Passeio"}</h2>
           <Button
             variant="ghost"
@@ -199,7 +199,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="name">Nome do Passeio *</Label>
+              <Label htmlFor="name" className="mb-2 text-gray-700">Nome do Passeio *</Label>
               <Input
                 id="name"
                 value={formData.name}
@@ -208,7 +208,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
               />
             </div>
             <div>
-              <Label htmlFor="location">Localização *</Label>
+              <Label htmlFor="location" className="mb-2 text-gray-700">Localização *</Label>
               <Input
                 id="location"
                 value={formData.location}
@@ -219,7 +219,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
           </div>
 
           <div>
-            <Label htmlFor="description">Descrição</Label>
+            <Label htmlFor="description" className="mb-2 text-gray-700">Descrição</Label>
             <Textarea
               id="description"
               value={formData.description}
@@ -230,7 +230,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <Label htmlFor="type">Tipo *</Label>
+              <Label htmlFor="type" className="mb-2 text-gray-700">Tipo *</Label>
               <select
                 id="type"
                 value={formData.type}
@@ -247,7 +247,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
               </select>
             </div>
             <div>
-              <Label htmlFor="duration">Duração (horas) *</Label>
+              <Label htmlFor="duration" className="mb-2 text-gray-700">Duração (horas) *</Label>
               <Input
                 id="duration"
                 type="number"
@@ -257,7 +257,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
               />
             </div>
             <div>
-              <Label htmlFor="price">Preço (€) *</Label>
+              <Label htmlFor="price" className="mb-2 text-gray-700">Preço (€) *</Label>
               <Input
                 id="price"
                 type="number"
@@ -267,7 +267,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
               />
             </div>
             <div>
-              <Label htmlFor="maxPeople">Máx. Pessoas</Label>
+              <Label htmlFor="maxPeople" className="mb-2 text-gray-700">Máx. Pessoas</Label>
               <Input
                 id="maxPeople"
                 type="number"
@@ -281,7 +281,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
             <h3 className="text-sm font-semibold text-gray-900">Tarifas por Número de Pessoas</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <Label htmlFor="tarifa2">Até 2 pessoas (€)</Label>
+                <Label htmlFor="tarifa2" className="mb-2 text-gray-700">Até 2 pessoas (€)</Label>
                 <Input
                   id="tarifa2"
                   type="number"
@@ -290,7 +290,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
                 />
               </div>
               <div>
-                <Label htmlFor="tarifa4">Até 4 pessoas (€)</Label>
+                <Label htmlFor="tarifa4" className="mb-2 text-gray-700">Até 4 pessoas (€)</Label>
                 <Input
                   id="tarifa4"
                   type="number"
@@ -299,7 +299,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
                 />
               </div>
               <div>
-                <Label htmlFor="tarifa6">Até 06 pessoas (€)</Label>
+                <Label htmlFor="tarifa6" className="mb-2 text-gray-700">Até 06 pessoas (€)</Label>
                 <Input
                   id="tarifa6"
                   type="number"
@@ -308,7 +308,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
                 />
               </div>
               <div>
-                <Label htmlFor="tarifa8">Até 08 pessoas (€)</Label>
+                <Label htmlFor="tarifa8" className="mb-2 text-gray-700">Até 08 pessoas (€)</Label>
                 <Input
                   id="tarifa8"
                   type="number"
@@ -317,7 +317,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
                 />
               </div>
               <div>
-                <Label htmlFor="tarifa10">Até 10 pessoas (€)</Label>
+                <Label htmlFor="tarifa10" className="mb-2 text-gray-700">Até 10 pessoas (€)</Label>
                 <Input
                   id="tarifa10"
                   type="number"
@@ -327,7 +327,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
               </div>
             </div>
             <div>
-              <Label htmlFor="sobConsulta">Sob consulta (Texto explicativo)</Label>
+              <Label htmlFor="sobConsulta" className="mb-2 text-gray-700">Sob consulta (Texto explicativo)</Label>
               <Input
                 id="sobConsulta"
                 placeholder="Ex: Grupos com + de 8 pessoas, menores..."
@@ -339,7 +339,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
 
           <div className="space-y-3">
             <div>
-              <Label className="text-sm font-medium text-gray-700">Idiomas</Label>
+              <Label className="text-sm font-semibold text-gray-800 mb-1">Idiomas</Label>
               <p className="text-xs text-gray-500 mt-1">Adicione os idiomas disponíveis para este passeio</p>
             </div>
             <div className="flex gap-2 mb-2">
@@ -372,7 +372,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
 
           <div className="space-y-3">
             <div>
-              <Label className="text-sm font-medium text-gray-700">Itens Inclusos</Label>
+              <Label className="text-sm font-semibold text-gray-800 mb-1">Itens Inclusos</Label>
               <p className="text-xs text-gray-500 mt-1">Serviços e itens incluídos no passeio</p>
             </div>
             <div className="flex gap-2 mb-2">
@@ -405,7 +405,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
 
           <div className="space-y-3">
             <div>
-              <Label className="text-sm font-medium text-gray-700">Imagens do Passeio</Label>
+              <Label className="text-sm font-semibold text-gray-800 mb-1">Imagens do Passeio</Label>
               <p className="text-xs text-gray-500 mt-1">Faça upload das imagens ou adicione URLs</p>
             </div>
 
@@ -514,7 +514,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
           </div>
 
           <div>
-            <Label htmlFor="specialRequirements">Requisitos Especiais</Label>
+            <Label htmlFor="specialRequirements" className="mb-2 text-gray-700">Requisitos Especiais</Label>
             <Textarea
               id="specialRequirements"
               value={formData.specialRequirements}
@@ -524,7 +524,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
           </div>
 
           <div>
-            <Label htmlFor="status">Status</Label>
+            <Label htmlFor="status" className="mb-2 text-gray-700">Status</Label>
             <select
               id="status"
               value={formData.status}
