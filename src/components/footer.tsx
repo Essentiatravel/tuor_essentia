@@ -114,9 +114,18 @@ export default function Footer() {
                 <MessageCircle className="w-4 h-4 text-green-400" />
                 <span className="text-gray-300 text-sm">+55 11 99999-9999</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-red-400" />
-                <span className="text-gray-300 text-sm">São Tomé, STP</span>
+              <div className="flex items-start space-x-3">
+                <MapPin className="w-4 h-4 text-red-400 mt-1 flex-shrink-0" />
+                <div className="text-gray-300 text-sm space-y-2">
+                  <div>
+                    <span className="font-semibold block text-orange-400 text-xs">São Tomé:</span>
+                    Av. Marginal 12 de Julho, São Tomé
+                  </div>
+                  <div>
+                    <span className="font-semibold block text-orange-400 text-xs">Suíça:</span>
+                    Rue des Bossons 4, 1213 Genève
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
