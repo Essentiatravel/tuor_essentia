@@ -57,7 +57,7 @@ export default function AboutUs() {
                 <img 
                   src="/about/real-4.jpg" 
                   alt="Guia Local e Cliente Feliz em São Tomé" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[center_15%]"
                 />
               </div>
             </div>
