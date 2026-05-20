@@ -272,11 +272,15 @@ const ManageToursPage: React.FC = () => {
           ...prevTours,
         ]);
         setIsAddTourModalOpen(false);
+        alert("Passeio criado com sucesso!");
       } else {
-        console.error("Erro ao criar passeio");
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Erro ao criar passeio:", errorData);
+        alert(`Erro ao criar passeio: ${errorData.details || errorData.error || "Erro desconhecido"}`);
       }
     } catch (error) {
       console.error("Erro ao criar passeio:", error);
+      alert("Erro de conexão ao criar passeio.");
     }
   };
 
@@ -335,11 +339,15 @@ const ManageToursPage: React.FC = () => {
         setIsEditTourModalOpen(false);
         setSelectedTour(null);
         await fetchTours();
+        alert("Passeio atualizado com sucesso!");
       } else {
-        console.error("Erro ao atualizar passeio");
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Erro ao atualizar passeio:", errorData);
+        alert(`Erro ao atualizar passeio: ${errorData.details || errorData.error || "Erro desconhecido"}`);
       }
     } catch (error) {
       console.error("Erro ao atualizar passeio:", error);
+      alert("Erro de conexão ao atualizar passeio.");
     }
   };
 
