@@ -114,6 +114,24 @@ export default function PacoteDetalhes() {
     };
   }, [selectedDate]);
   const [selectedPeople, setSelectedPeople] = useState(1);
+  const [selectedAdults, setSelectedAdults] = useState(1);
+  const [selectedChildren, setSelectedChildren] = useState(0);
+  const [childrenAges, setChildrenAges] = useState("");
+
+  // Sincronizar o número total de pessoas
+  useEffect(() => {
+    setSelectedPeople(selectedAdults + selectedChildren);
+  }, [selectedAdults, selectedChildren]);
+
+  // Sincronizar o tipo de reserva (isGroup) com o número total de pessoas
+  useEffect(() => {
+    if (selectedPeople >= 5) {
+      setIsGroup(true);
+    } else {
+      setIsGroup(false);
+    }
+  }, [selectedPeople]);
+
   const [isGroup, setIsGroup] = useState(false);
   const [customerInfo, setCustomerInfo] = useState({
     nome: "",
@@ -169,12 +187,20 @@ export default function PacoteDetalhes() {
       return;
     }
 
+    // Se houver crianças, a idade é obrigatória
+    if (selectedChildren > 0 && !childrenAges.trim()) {
+      alert("Por favor, informe a idade das crianças no campo indicado.");
+      return;
+    }
+
     setProcessing(true);
     try {
+      const travelersBreakdown = `[Viajantes: ${selectedAdults} Adulto(s)${selectedChildren > 0 ? ` | ${selectedChildren} Criança(s) (Idades: ${childrenAges})` : ""}]`;
+
       // Formatar observações com informações de ida e volta se selecionado
       const observacoesFormatadas = isRoundTrip
-        ? `[TIPO DE PACOTE: Ida e Volta (Com Voos)]\n[Data de Ida: ${format(selectedDate, "dd/MM/yyyy")}]\n[Data de Volta: ${format(selectedReturnDate!, "dd/MM/yyyy")}]\n\nObservações: ${customerInfo.observacoes}`
-        : `[TIPO DE PACOTE: Somente Ida / Terrestre]\n[Data de Ida: ${format(selectedDate, "dd/MM/yyyy")}]\n\nObservações: ${customerInfo.observacoes}`;
+        ? `[TIPO DE PACOTE: Ida e Volta (Com Voos)]\n[Data de Ida: ${format(selectedDate, "dd/MM/yyyy")}]\n[Data de Volta: ${format(selectedReturnDate!, "dd/MM/yyyy")}]\n${travelersBreakdown}\n\nObservações: ${customerInfo.observacoes}`
+        : `[TIPO DE PACOTE: Somente Ida / Terrestre]\n[Data de Ida: ${format(selectedDate, "dd/MM/yyyy")}]\n${travelersBreakdown}\n\nObservações: ${customerInfo.observacoes}`;
 
       // Fluxo de Lead: Envia para /api/leads
       const response = await fetch('/api/leads', {
@@ -240,7 +266,9 @@ export default function PacoteDetalhes() {
     );
   }
 
-  const valorTotal = pacote.preco * selectedPeople;
+  const valorAdultos = pacote.preco * selectedAdults;
+  const valorCriancas = (pacote.preco * 0.5) * selectedChildren; // Crianças pagam 50% em pacotes
+  const valorTotal = valorAdultos + valorCriancas;
   const desconto = isGroup && selectedPeople >= 5 ? 0.1 : 0;
   const valorFinal = valorTotal * (1 - desconto);
 
@@ -563,30 +591,66 @@ export default function PacoteDetalhes() {
                 )}
 
                 {/* Número de pessoas */}
-                <div>
-                  <Label htmlFor="people" className="text-base font-semibold text-gray-900">Número de pessoas</Label>
-                  <Select
-                    value={selectedPeople.toString()}
-                    onValueChange={(value) => setSelectedPeople(Number(value))}
-                  >
-                    <SelectTrigger className="mt-2 h-12 border-2 hover:border-orange-300 focus:border-orange-500">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="border-2 border-orange-200">
-                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20].map((num) => (
-                        <SelectItem key={num} value={num.toString()} className="hover:bg-orange-50">
-                          <div className="flex items-center justify-between w-full">
-                            <span>{num} {num === 1 ? 'pessoa' : 'pessoas'}</span>
-                            {num >= 5 && (
-                              <Badge className="ml-2 bg-green-500 text-white text-xs">
-                                10% OFF
-                              </Badge>
-                            )}
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="adults" className="text-sm font-semibold text-gray-700">Adultos</Label>
+                      <Select
+                        value={selectedAdults.toString()}
+                        onValueChange={(value) => setSelectedAdults(Number(value))}
+                      >
+                        <SelectTrigger className="mt-2 h-12 border-2 hover:border-orange-300 focus:border-orange-500 bg-white">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent className="border-2 border-orange-200">
+                          {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+                            <SelectItem key={num} value={num.toString()} className="hover:bg-orange-50">
+                              {num} {num === 1 ? 'adulto' : 'adultos'}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="children" className="text-sm font-semibold text-gray-700">Crianças</Label>
+                      <Select
+                        value={selectedChildren.toString()}
+                        onValueChange={(value) => setSelectedChildren(Number(value))}
+                      >
+                        <SelectTrigger className="mt-2 h-12 border-2 hover:border-orange-300 focus:border-orange-500 bg-white">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent className="border-2 border-orange-200">
+                          {Array.from({ length: 11 }, (_, i) => i).map((num) => (
+                            <SelectItem key={num} value={num.toString()} className="hover:bg-orange-50">
+                              {num === 0 ? 'Nenhuma' : `${num} ${num === 1 ? 'criança' : 'crianças'}`}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  {selectedChildren > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="bg-orange-50/50 p-3 rounded-lg border border-orange-100/80"
+                    >
+                      <Label htmlFor="childrenAges" className="text-xs font-semibold text-orange-800">
+                        Idades das Crianças e Observações *
+                      </Label>
+                      <Input
+                        id="childrenAges"
+                        placeholder="Ex: Criança 1: 5 anos, Criança 2: 8 anos..."
+                        value={childrenAges}
+                        onChange={(e) => setChildrenAges(e.target.value)}
+                        required
+                        className="mt-1.5 h-10 border-orange-200 bg-white focus:border-orange-400 focus:ring-orange-400 placeholder:text-gray-400 text-sm"
+                      />
+                    </motion.div>
+                  )}
                 </div>
 
                 {/* Informações do cliente */}
@@ -659,9 +723,15 @@ export default function PacoteDetalhes() {
                       </div>
                     )}
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">{formatCurrency(pacote.preco)} × {selectedPeople} {selectedPeople === 1 ? 'pessoa' : 'pessoas'}</span>
-                      <span className="font-medium">{formatCurrency(valorTotal)}</span>
+                      <span className="text-gray-600">{selectedAdults} {selectedAdults === 1 ? 'Adulto' : 'Adultos'} × {formatCurrency(pacote.preco)}</span>
+                      <span className="font-medium">{formatCurrency(valorAdultos)}</span>
                     </div>
+                    {selectedChildren > 0 && (
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600">{selectedChildren} {selectedChildren === 1 ? 'Criança' : 'Crianças'} (50% desc.) × {formatCurrency(pacote.preco * 0.5)}</span>
+                        <span className="font-medium">{formatCurrency(valorCriancas)}</span>
+                      </div>
+                    )}
                     {desconto > 0 && (
                       <div className="flex justify-between items-center text-green-600">
                         <span className="flex items-center gap-1">

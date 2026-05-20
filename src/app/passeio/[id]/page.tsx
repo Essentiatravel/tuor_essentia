@@ -65,6 +65,14 @@ export default function PasseioDetalhes() {
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [selectedPeople, setSelectedPeople] = useState(1);
+  const [selectedAdults, setSelectedAdults] = useState(1);
+  const [selectedChildren, setSelectedChildren] = useState(0);
+  const [childrenAges, setChildrenAges] = useState("");
+
+  // Sincronizar o número total de pessoas
+  useEffect(() => {
+    setSelectedPeople(selectedAdults + selectedChildren);
+  }, [selectedAdults, selectedChildren]);
   const [isGroup, setIsGroup] = useState(false);
   const [customerInfo, setCustomerInfo] = useState({
     nome: "",
@@ -113,10 +121,19 @@ export default function PasseioDetalhes() {
       return;
     }
 
+    // Se houver crianças, a idade é obrigatória
+    if (selectedChildren > 0 && !childrenAges.trim()) {
+      alert("Por favor, informe a idade das crianças no campo indicado.");
+      return;
+    }
+
     setProcessing(true);
     try {
+      const travelersBreakdown = `[Viajantes: ${selectedAdults} Adulto(s)${selectedChildren > 0 ? ` | ${selectedChildren} Criança(s) (Idades: ${childrenAges})` : ""}]`;
+
       const formattedObservacoes = [
-        `[Resumo de Preço no Site: ${formatCurrency(precoUnitario)} por pessoa | Total Final: ${formatCurrency(valorFinal)}]`,
+        travelersBreakdown,
+        `[Resumo de Preço no Site: ${formatCurrency(precoUnitario)} por adulto | Total Final: ${formatCurrency(valorFinal)}]`,
         customerInfo.observacoes
       ].filter(Boolean).join('\n');
 
@@ -206,7 +223,9 @@ export default function PasseioDetalhes() {
   };
 
   const precoUnitario = obterPrecoPorPessoa();
-  const valorTotal = precoUnitario * selectedPeople;
+  const valorAdultos = precoUnitario * selectedAdults;
+  const valorCriancas = (precoUnitario * 0.5) * selectedChildren; // Crianças pagam 50% em passeios
+  const valorTotal = valorAdultos + valorCriancas;
 
   // Apenas aplica o desconto genérico de grupo se não estiver usando uma tarifa de grupo específica
   const temTarifaEspecifica = selectedPeople > 2 && (() => {
@@ -579,30 +598,66 @@ export default function PasseioDetalhes() {
                 </div>
 
                 {/* Número de pessoas */}
-                <div>
-                  <Label htmlFor="people" className="text-base font-semibold text-gray-900">Número de pessoas</Label>
-                  <Select
-                    value={selectedPeople.toString()}
-                    onValueChange={(value) => setSelectedPeople(Number(value))}
-                  >
-                    <SelectTrigger className="mt-2 h-12 border-2 hover:border-orange-300 focus:border-orange-500">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="border-2 border-orange-200">
-                      {Array.from({ length: passeio.capacidadeMaxima || 20 }, (_, i) => i + 1).map((num) => (
-                        <SelectItem key={num} value={num.toString()} className="hover:bg-orange-50">
-                          <div className="flex items-center justify-between w-full">
-                            <span>{num} {num === 1 ? 'pessoa' : 'pessoas'}</span>
-                            {num >= 5 && descontoPorcentagem > 0 && (
-                              <Badge className="ml-2 bg-green-500 text-white text-xs">
-                                {Math.round(descontoPorcentagem * 100)}% OFF
-                              </Badge>
-                            )}
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="adults" className="text-sm font-semibold text-gray-700">Adultos</Label>
+                      <Select
+                        value={selectedAdults.toString()}
+                        onValueChange={(value) => setSelectedAdults(Number(value))}
+                      >
+                        <SelectTrigger className="mt-2 h-12 border-2 hover:border-orange-300 focus:border-orange-500 bg-white">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent className="border-2 border-orange-200">
+                          {Array.from({ length: passeio.capacidadeMaxima || 20 }, (_, i) => i + 1).map((num) => (
+                            <SelectItem key={num} value={num.toString()} className="hover:bg-orange-50">
+                              {num} {num === 1 ? 'adulto' : 'adultos'}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="children" className="text-sm font-semibold text-gray-700">Crianças</Label>
+                      <Select
+                        value={selectedChildren.toString()}
+                        onValueChange={(value) => setSelectedChildren(Number(value))}
+                      >
+                        <SelectTrigger className="mt-2 h-12 border-2 hover:border-orange-300 focus:border-orange-500 bg-white">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent className="border-2 border-orange-200">
+                          {Array.from({ length: 11 }, (_, i) => i).map((num) => (
+                            <SelectItem key={num} value={num.toString()} className="hover:bg-orange-50">
+                              {num === 0 ? 'Nenhuma' : `${num} ${num === 1 ? 'criança' : 'crianças'}`}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  {selectedChildren > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="bg-orange-50/50 p-3 rounded-lg border border-orange-100/80"
+                    >
+                      <Label htmlFor="childrenAges" className="text-xs font-semibold text-orange-800">
+                        Idades das Crianças e Observações *
+                      </Label>
+                      <Input
+                        id="childrenAges"
+                        placeholder="Ex: Criança 1: 5 anos, Criança 2: 8 anos..."
+                        value={childrenAges}
+                        onChange={(e) => setChildrenAges(e.target.value)}
+                        required
+                        className="mt-1.5 h-10 border-orange-200 bg-white focus:border-orange-400 focus:ring-orange-400 placeholder:text-gray-400 text-sm"
+                      />
+                    </motion.div>
+                  )}
                 </div>
 
                 {/* Informações do cliente */}
@@ -663,9 +718,15 @@ export default function PasseioDetalhes() {
                   <h5 className="font-semibold text-gray-900 mb-3">Resumo da reserva</h5>
                   <div className="space-y-3 text-sm bg-gray-50 rounded-lg p-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">{formatCurrency(precoUnitario)} × {selectedPeople} {selectedPeople === 1 ? 'pessoa' : 'pessoas'}</span>
-                      <span className="font-medium">{formatCurrency(valorTotal)}</span>
+                      <span className="text-gray-600">{selectedAdults} {selectedAdults === 1 ? 'Adulto' : 'Adultos'} × {formatCurrency(precoUnitario)}</span>
+                      <span className="font-medium">{formatCurrency(valorAdultos)}</span>
                     </div>
+                    {selectedChildren > 0 && (
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600">{selectedChildren} {selectedChildren === 1 ? 'Criança' : 'Crianças'} (50% desc.) × {formatCurrency(precoUnitario * 0.5)}</span>
+                        <span className="font-medium">{formatCurrency(valorCriancas)}</span>
+                      </div>
+                    )}
                     {desconto > 0 && (
                       <div className="flex justify-between items-center text-green-600">
                         <span className="flex items-center gap-1">
