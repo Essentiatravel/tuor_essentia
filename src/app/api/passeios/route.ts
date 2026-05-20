@@ -26,6 +26,7 @@ const ensureArray = (value: unknown): string[] => {
 
 export async function GET() {
   try {
+    await db.ensurePasseiosColumnsExist();
     console.log('🔄 Buscando passeios no banco de dados via SQL...');
     const result = await db.query('SELECT * FROM passeios');
     const todosPasseios = result.rows;
@@ -69,6 +70,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    await db.ensurePasseiosColumnsExist();
     const passeioData = await request.json();
     console.log('📦 Recebendo dados para criar passeio:', JSON.stringify(passeioData, null, 2));
 

@@ -28,6 +28,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await db.ensurePasseiosColumnsExist();
     const { id } = await params;
     console.log('🔍 Buscando passeio no banco via SQL:', id);
 
@@ -76,6 +77,7 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await db.ensurePasseiosColumnsExist();
     const { id } = await params;
     const passeioData = await request.json();
 
@@ -150,6 +152,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await db.ensurePasseiosColumnsExist();
     const { id } = await params;
     console.log('🗑️ Excluindo passeio via SQL:', id);
 
