@@ -54,6 +54,7 @@ interface Passeio {
   tarifa8Pessoas?: number;
   tarifa10Pessoas?: number;
   sobConsultaTexto?: string;
+  descontoGrupo?: number;
 }
 
 export default function PasseioDetalhes() {
@@ -96,6 +97,15 @@ export default function PasseioDetalhes() {
       carregarPasseio();
     }
   }, [params.id]);
+
+  // Sincronizar o tipo de reserva (isGroup) com o número de pessoas selecionadas
+  useEffect(() => {
+    if (selectedPeople >= 5) {
+      setIsGroup(true);
+    } else {
+      setIsGroup(false);
+    }
+  }, [selectedPeople]);
 
   const handleBooking = async () => {
     if (!selectedDate || !customerInfo.nome || !customerInfo.email) {
@@ -206,7 +216,16 @@ export default function PasseioDetalhes() {
     return (passeio.tarifa10Pessoas || 0) > 0;
   })();
 
-  const desconto = (!temTarifaEspecifica && isGroup && selectedPeople >= 5) ? 0.1 : 0;
+  const obterDescontoPorcentagem = () => {
+    if (!passeio) return 0.1;
+    if (passeio.descontoGrupo !== undefined && passeio.descontoGrupo !== null) {
+      return passeio.descontoGrupo / 100;
+    }
+    return 0.1; // Fallback para 10%
+  };
+
+  const descontoPorcentagem = obterDescontoPorcentagem();
+  const desconto = (!temTarifaEspecifica && isGroup && selectedPeople >= 5) ? descontoPorcentagem : 0;
   const valorFinal = valorTotal * (1 - desconto);
 
   return (
@@ -251,7 +270,9 @@ export default function PasseioDetalhes() {
                 </div>
                 <div className="absolute top-4 right-4 z-10">
                   <Badge className="bg-orange-500 text-white">
-                    {isGroup && selectedPeople >= 5 ? "10% OFF Grupo" : "Melhor Preço"}
+                    {isGroup && selectedPeople >= 5 && descontoPorcentagem > 0 
+                      ? `${Math.round(descontoPorcentagem * 100)}% OFF Grupo` 
+                      : "Melhor Preço"}
                   </Badge>
                 </div>
                 {(() => {
@@ -548,7 +569,11 @@ export default function PasseioDetalhes() {
                     >
                       <Users className="h-4 w-4 mr-2" />
                       Grupo
-                      {isGroup && <Badge className="ml-2 bg-green-500 text-white text-xs">10% OFF</Badge>}
+                      {isGroup && descontoPorcentagem > 0 && (
+                        <Badge className="ml-2 bg-green-500 text-white text-xs">
+                          {Math.round(descontoPorcentagem * 100)}% OFF
+                        </Badge>
+                      )}
                     </Button>
                   </div>
                 </div>
@@ -568,9 +593,9 @@ export default function PasseioDetalhes() {
                         <SelectItem key={num} value={num.toString()} className="hover:bg-orange-50">
                           <div className="flex items-center justify-between w-full">
                             <span>{num} {num === 1 ? 'pessoa' : 'pessoas'}</span>
-                            {num >= 5 && (
+                            {num >= 5 && descontoPorcentagem > 0 && (
                               <Badge className="ml-2 bg-green-500 text-white text-xs">
-                                10% OFF
+                                {Math.round(descontoPorcentagem * 100)}% OFF
                               </Badge>
                             )}
                           </div>
@@ -644,7 +669,7 @@ export default function PasseioDetalhes() {
                     {desconto > 0 && (
                       <div className="flex justify-between items-center text-green-600">
                         <span className="flex items-center gap-1">
-                          🎉 Desconto grupo (10%)
+                          🎉 Desconto grupo ({Math.round(descontoPorcentagem * 100)}%)
                         </span>
                         <span className="font-medium">-{formatCurrency(valorTotal * desconto)}</span>
                       </div>

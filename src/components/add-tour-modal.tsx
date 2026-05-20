@@ -35,6 +35,7 @@ interface TourData {
   tarifa8Pessoas?: number;
   tarifa10Pessoas?: number;
   sobConsultaTexto?: string;
+  descontoGrupo?: number;
 }
 
 export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, isEdit = false }: AddTourModalProps) {
@@ -59,6 +60,7 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
     tarifa8Pessoas: 0,
     tarifa10Pessoas: 0,
     sobConsultaTexto: "",
+    descontoGrupo: 10,
   });
 
   // Atualizar formData quando initialData mudar (modo de edição)
@@ -84,6 +86,13 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
         images: [],
         specialRequirements: "",
         status: "Ativo",
+        tarifa2Pessoas: 0,
+        tarifa4Pessoas: 0,
+        tarifa6Pessoas: 0,
+        tarifa8Pessoas: 0,
+        tarifa10Pessoas: 0,
+        sobConsultaTexto: "",
+        descontoGrupo: 10,
       });
     }
   }, [initialData, isEdit, isOpen]);
@@ -326,14 +335,26 @@ export default function AddTourModal({ isOpen, onClose, onSubmit, initialData, i
                 />
               </div>
             </div>
-            <div>
-              <Label htmlFor="sobConsulta" className="mb-2 text-gray-700">Sob consulta (Texto explicativo)</Label>
-              <Input
-                id="sobConsulta"
-                placeholder="Ex: Grupos com + de 8 pessoas, menores..."
-                value={formData.sobConsultaTexto}
-                onChange={(e) => handleInputChange("sobConsultaTexto", e.target.value)}
-              />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="md:col-span-2">
+                <Label htmlFor="sobConsulta" className="mb-2 text-gray-700">Sob consulta (Texto explicativo)</Label>
+                <Input
+                  id="sobConsulta"
+                  placeholder="Ex: Grupos com + de 8 pessoas, menores..."
+                  value={formData.sobConsultaTexto}
+                  onChange={(e) => handleInputChange("sobConsultaTexto", e.target.value)}
+                />
+              </div>
+              <div>
+                <Label htmlFor="descontoGrupo" className="mb-2 text-gray-700">Desconto p/ Grupos (%)</Label>
+                <Input
+                  id="descontoGrupo"
+                  type="number"
+                  placeholder="Ex: 10"
+                  value={formData.descontoGrupo}
+                  onChange={(e) => handleInputChange("descontoGrupo", parseFloat(e.target.value) || 0)}
+                />
+              </div>
             </div>
           </div>
 

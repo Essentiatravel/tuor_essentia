@@ -60,6 +60,7 @@ export async function GET(
       tarifa8Pessoas: passeio.tarifa_8_pessoas,
       tarifa10Pessoas: passeio.tarifa_10_pessoas,
       sobConsultaTexto: passeio.sob_consulta_texto,
+      descontoGrupo: passeio.desconto_grupo,
       ativo: passeio.ativo,
       criadoEm: passeio.criado_em,
       atualizadoEm: passeio.atualizado_em
@@ -115,6 +116,7 @@ export async function PUT(
     if (passeioData.tarifa8Pessoas !== undefined) addField('tarifa_8_pessoas', parseSafeFloat(passeioData.tarifa8Pessoas));
     if (passeioData.tarifa10Pessoas !== undefined) addField('tarifa_10_pessoas', parseSafeFloat(passeioData.tarifa10Pessoas));
     if (passeioData.sobConsultaTexto !== undefined) addField('sob_consulta_texto', passeioData.sobConsultaTexto || null);
+    if (passeioData.descontoGrupo !== undefined) addField('desconto_grupo', parseSafeFloat(passeioData.descontoGrupo));
 
     // Status check
     const isActive = (passeioData.status === 'Ativo' || passeioData.ativo === 1 || passeioData.ativo === true) ? 1 : 0;

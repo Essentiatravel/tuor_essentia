@@ -56,6 +56,7 @@ export async function GET() {
         tarifa8Pessoas: p.tarifa_8_pessoas,
         tarifa10Pessoas: p.tarifa_10_pessoas,
         sobConsultaTexto: p.sob_consulta_texto,
+        descontoGrupo: p.desconto_grupo,
         ativo: p.ativo,
         criadoEm: p.criado_em,
         atualizadoEm: p.atualizado_em
@@ -100,8 +101,8 @@ export async function POST(request: Request) {
     const insertQuery = `
       INSERT INTO passeios 
       (id, nome, descricao, preco, duracao, categoria, imagens, inclusoes, idiomas, capacidade_maxima, ativo, criado_em, atualizado_em,
-       tarifa_2_pessoas, tarifa_4_pessoas, tarifa_6_pessoas, tarifa_8_pessoas, tarifa_10_pessoas, sob_consulta_texto)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW(), NOW(), $12, $13, $14, $15, $16, $17)
+       tarifa_2_pessoas, tarifa_4_pessoas, tarifa_6_pessoas, tarifa_8_pessoas, tarifa_10_pessoas, sob_consulta_texto, desconto_grupo)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW(), NOW(), $12, $13, $14, $15, $16, $17, $18)
       RETURNING *
     `;
 
@@ -117,12 +118,13 @@ export async function POST(request: Request) {
       idiomas,
       capacidadeMaxima,
       1,
-      parseSafeFloat(passeioData.tarifa2Pessoas),
-      parseSafeFloat(passeioData.tarifa4Pessoas),
-      parseSafeFloat(passeioData.tarifa6Pessoas),
-      parseSafeFloat(passeioData.tarifa8Pessoas),
-      parseSafeFloat(passeioData.tarifa10Pessoas),
-      passeioData.sobConsultaTexto || null
+      parseFloat(passeioData.tarifa2Pessoas) || null,
+      parseFloat(passeioData.tarifa4Pessoas) || null,
+      parseFloat(passeioData.tarifa6Pessoas) || null,
+      parseFloat(passeioData.tarifa8Pessoas) || null,
+      parseFloat(passeioData.tarifa10Pessoas) || null,
+      passeioData.sobConsultaTexto || null,
+      parseFloat(passeioData.descontoGrupo) !== undefined ? parseFloat(passeioData.descontoGrupo) : null
     ]);
 
     console.log('✅ Inserção com sucesso. Rows:', result.rowCount);

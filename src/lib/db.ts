@@ -45,7 +45,8 @@ export const db = {
                 { name: 'tarifa_8_pessoas', type: 'real' },
                 { name: 'tarifa_10_pessoas', type: 'real' },
                 { name: 'sob_consulta_texto', type: 'text' },
-                { name: 'preco_real', type: 'real' }
+                { name: 'preco_real', type: 'real' },
+                { name: 'desconto_grupo', type: 'real' }
             ];
 
             for (const col of columnsToAdd) {
