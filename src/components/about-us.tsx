@@ -48,15 +48,15 @@ export default function AboutUs() {
             <div className="space-y-4">
               <div className="rounded-3xl overflow-hidden shadow-lg h-64 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=600&h=400&q=80" 
-                  alt="Praias Paradisíacas de São Tomé" 
+                  src="/uploads/real-1.jpg" 
+                  alt="Clientes Explora Aventura em Passeio de Barco" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg h-44 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=400&h=300&q=80" 
-                  alt="Trilhas e Roças de STP" 
+                  src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=400&h=300&q=80" 
+                  alt="Praias Paradisíacas de São Tomé" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -65,15 +65,15 @@ export default function AboutUs() {
             <div className="space-y-4 pt-8">
               <div className="rounded-3xl overflow-hidden shadow-lg h-44 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1432406186174-2b24f4860367?auto=format&fit=crop&w=400&h=300&q=80" 
-                  alt="Cachoeiras na Selva do Obô" 
+                  src="/uploads/real-3.jpg" 
+                  alt="Breathtaking Pico Cão Grande volcanic needle" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg h-64 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&h=400&q=80" 
-                  alt="Lagoa e Coqueiros de Ilhéu das Rolas" 
+                  src="/uploads/real-2.jpg" 
+                  alt="Grupo de Clientes no Pico Cão Grande com Guia" 
                   className="w-full h-full object-cover"
                 />
               </div>

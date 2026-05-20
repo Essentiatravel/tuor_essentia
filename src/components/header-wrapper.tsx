@@ -1,9 +1,9 @@
-
 "use client";
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Header from "./header";
+import WhatsAppFloat from "./whatsapp-float";
 
 export default function HeaderWrapper() {
   const [isClient, setIsClient] = useState(false);
@@ -28,6 +28,7 @@ export default function HeaderWrapper() {
     <>
       <Header />
       <div className="pt-20 md:pt-[116px]" />
+      <WhatsAppFloat />
     </>
   );
 }

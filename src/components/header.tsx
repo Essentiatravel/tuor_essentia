@@ -83,16 +83,16 @@ export default function Header() {
 
         <nav className="hidden md:flex items-center gap-6">
           <button
-            onClick={() => scrollToSection('roteiros')}
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Roteiros
-          </button>
-          <button
             onClick={() => scrollToSection('quem-somos')}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Sobre Nós
+          </button>
+          <button
+            onClick={() => scrollToSection('roteiros')}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Roteiros
           </button>
           <button
             onClick={scrollToPasseios}
@@ -198,22 +198,22 @@ export default function Header() {
                 <nav className="flex-1 space-y-4">
                   <button
                     onClick={() => {
-                      scrollToSection('roteiros');
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="w-full text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
-                  >
-                    🗺️ Roteiros
-                  </button>
-
-                  <button
-                    onClick={() => {
                       scrollToSection('quem-somos');
                       setIsMobileMenuOpen(false);
                     }}
                     className="w-full text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
                   >
                     👥 Sobre Nós
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      scrollToSection('roteiros');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
+                  >
+                    🗺️ Roteiros
                   </button>
 
                   <button
