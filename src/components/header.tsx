@@ -89,6 +89,12 @@ export default function Header() {
             Roteiros
           </button>
           <button
+            onClick={() => scrollToSection('quem-somos')}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Sobre Nós
+          </button>
+          <button
             onClick={scrollToPasseios}
             className="text-muted-foreground hover:text-foreground transition-colors font-medium text-orange-500 hover:text-orange-600"
           >
@@ -198,6 +204,16 @@ export default function Header() {
                     className="w-full text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
                   >
                     🗺️ Roteiros
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      scrollToSection('quem-somos');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
+                  >
+                    👥 Sobre Nós
                   </button>
 
                   <button
