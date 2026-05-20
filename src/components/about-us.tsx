@@ -48,15 +48,15 @@ export default function AboutUs() {
             <div className="space-y-4">
               <div className="rounded-3xl overflow-hidden shadow-lg h-64 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&h=400&q=80" 
-                  alt="Ilhéu das Rolas - São Tomé" 
+                  src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=600&h=400&q=80" 
+                  alt="Praias Paradisíacas de São Tomé" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg h-44 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=400&h=300&q=80" 
-                  alt="Roças de Café e Cacau" 
+                  src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=400&h=300&q=80" 
+                  alt="Trilhas e Roças de STP" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -65,15 +65,15 @@ export default function AboutUs() {
             <div className="space-y-4 pt-8">
               <div className="rounded-3xl overflow-hidden shadow-lg h-44 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&h=300&q=80" 
-                  alt="Parque Nacional Obô - Selva" 
+                  src="https://images.unsplash.com/photo-1432406186174-2b24f4860367?auto=format&fit=crop&w=400&h=300&q=80" 
+                  alt="Cachoeiras na Selva do Obô" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg h-64 hover:scale-[1.02] transition-transform duration-300">
                 <img 
-                  src="https://images.unsplash.com/photo-1541167760496-1628856ab752?auto=format&fit=crop&w=400&h=400&q=80" 
-                  alt="Lagoa Azul Mergulho Cristalino" 
+                  src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&h=400&q=80" 
+                  alt="Lagoa e Coqueiros de Ilhéu das Rolas" 
                   className="w-full h-full object-cover"
                 />
               </div>
