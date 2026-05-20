@@ -105,6 +105,11 @@ export default function PasseioDetalhes() {
 
     setProcessing(true);
     try {
+      const formattedObservacoes = [
+        `[Resumo de Preço no Site: ${formatCurrency(precoUnitario)} por pessoa | Total Final: ${formatCurrency(valorFinal)}]`,
+        customerInfo.observacoes
+      ].filter(Boolean).join('\n');
+
       // Fluxo de Lead: Envia para /api/leads
       const response = await fetch('/api/leads', {
         method: 'POST',
@@ -117,7 +122,7 @@ export default function PasseioDetalhes() {
           passeioNome: passeio?.nome,
           data: selectedDate,
           pessoas: selectedPeople,
-          observacoes: customerInfo.observacoes
+          observacoes: formattedObservacoes
         }),
       });
 
@@ -171,8 +176,37 @@ export default function PasseioDetalhes() {
 
   const inclusoes = passeio.inclusoes || [];
   const idiomas = passeio.idiomas || [];
-  const valorTotal = passeio.preco * selectedPeople;
-  const desconto = isGroup && selectedPeople >= 5 ? 0.1 : 0;
+
+  // Obter o preço por pessoa com base no tier ou no preço padrão se for 0/vazio
+  const obterPrecoPorPessoa = () => {
+    if (!passeio) return 0;
+    let precoTier = 0;
+    if (selectedPeople <= 2) {
+      precoTier = passeio.tarifa2Pessoas || 0;
+    } else if (selectedPeople <= 4) {
+      precoTier = passeio.tarifa4Pessoas || 0;
+    } else if (selectedPeople <= 6) {
+      precoTier = passeio.tarifa6Pessoas || 0;
+    } else if (selectedPeople <= 8) {
+      precoTier = passeio.tarifa8Pessoas || 0;
+    } else if (selectedPeople <= 10) {
+      precoTier = passeio.tarifa10Pessoas || 0;
+    }
+    return precoTier > 0 ? precoTier : passeio.preco;
+  };
+
+  const precoUnitario = obterPrecoPorPessoa();
+  const valorTotal = precoUnitario * selectedPeople;
+
+  // Apenas aplica o desconto genérico de grupo se não estiver usando uma tarifa de grupo específica
+  const temTarifaEspecifica = selectedPeople > 2 && (() => {
+    if (selectedPeople <= 4) return (passeio.tarifa4Pessoas || 0) > 0;
+    if (selectedPeople <= 6) return (passeio.tarifa6Pessoas || 0) > 0;
+    if (selectedPeople <= 8) return (passeio.tarifa8Pessoas || 0) > 0;
+    return (passeio.tarifa10Pessoas || 0) > 0;
+  })();
+
+  const desconto = (!temTarifaEspecifica && isGroup && selectedPeople >= 5) ? 0.1 : 0;
   const valorFinal = valorTotal * (1 - desconto);
 
   return (
@@ -604,7 +638,7 @@ export default function PasseioDetalhes() {
                   <h5 className="font-semibold text-gray-900 mb-3">Resumo da reserva</h5>
                   <div className="space-y-3 text-sm bg-gray-50 rounded-lg p-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">{formatCurrency(passeio.preco)} × {selectedPeople} {selectedPeople === 1 ? 'pessoa' : 'pessoas'}</span>
+                      <span className="text-gray-600">{formatCurrency(precoUnitario)} × {selectedPeople} {selectedPeople === 1 ? 'pessoa' : 'pessoas'}</span>
                       <span className="font-medium">{formatCurrency(valorTotal)}</span>
                     </div>
                     {desconto > 0 && (
