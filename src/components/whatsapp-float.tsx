@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
 export default function WhatsAppFloat() {
-  const whatsappUrl = "https://wa.me/41795369072"; // Official Swiss contact
+  const whatsappUrl = "https://wa.me/2399048171"; // Official São Tomé contact
 
   return (
     <div className="fixed bottom-6 right-6 z-50 pointer-events-none">
