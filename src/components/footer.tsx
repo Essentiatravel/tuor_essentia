@@ -23,20 +23,22 @@ export default function Footer() {
               Explore o mundo com quem entende. Sua aventura começa aqui.
             </p>
             <div className="flex space-x-4">
-              <Button
-                size="icon"
-                variant="outline"
-                className="border-gray-600 hover:bg-blue-600 hover:border-blue-600"
+              <a
+                href="https://www.instagram.com/exploraaventura.stp?igsh=Zm9qZHY0amR1cHZs&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-transparent text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-500 hover:to-purple-600 hover:border-transparent transition-all duration-300"
               >
-                <Instagram className="w-4 h-4" />
-              </Button>
-              <Button
-                size="icon"
-                variant="outline"
-                className="border-gray-600 hover:bg-green-600 hover:border-green-600"
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://wa.me/2399048171"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-transparent text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-600 transition-all duration-300"
               >
-                <MessageCircle className="w-4 h-4" />
-              </Button>
+                <MessageCircle className="w-5 h-5" />
+              </a>
             </div>
           </motion.div>
 
