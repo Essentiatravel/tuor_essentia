@@ -51,10 +51,10 @@ export default function Header() {
         <div className="container mx-auto px-4 flex justify-between items-center max-w-full">
           <div className="flex gap-5">
             <a 
-              href="tel:+41779661285"
+              href="tel:+41795369072"
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
             >
-              <Phone className="w-3.5 h-3.5" /> +41 77 966 12 85
+              <Phone className="w-3.5 h-3.5" /> +41 79 536 90 72
             </a>
             <span className="flex items-center gap-1.5 hover:text-orange-100 transition-colors">
               <Mail className="w-3.5 h-3.5" /> contact@explora-aventura.com
