@@ -56,13 +56,16 @@ export default function Header() {
             >
               <Phone className="w-3.5 h-3.5" /> +41 79 536 90 72
             </a>
-            <span className="flex items-center gap-1.5 hover:text-orange-100 transition-colors">
+            <a 
+              href="mailto:contact@explora-aventura.com"
+              className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
+            >
               <Mail className="w-3.5 h-3.5" /> contact@explora-aventura.com
-            </span>
+            </a>
           </div>
           <div className="flex gap-5 items-center">
             <a 
-              href="https://wa.me/41779661285" 
+              href="https://wa.me/41795369072" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"

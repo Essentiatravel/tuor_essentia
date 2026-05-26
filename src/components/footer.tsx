@@ -101,37 +101,57 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <h4 className="text-lg font-semibold mb-4">Contato</h4>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-orange-400" />
-                <span className="text-gray-300 text-sm">contact@explora-aventura.com</span>
-              </div>
+            <div className="space-y-4">
               <a 
-                href="tel:+41779661285"
-                className="flex items-center space-x-3 hover:text-orange-400 transition-colors"
+                href="mailto:contact@explora-aventura.com"
+                className="flex items-center space-x-3 hover:text-orange-400 transition-colors pb-2 border-b border-gray-800"
               >
-                <Phone className="w-4 h-4 text-orange-400" />
-                <span className="text-gray-300 text-sm">+41 77 966 12 85</span>
+                <Mail className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                <span className="text-gray-300 text-sm font-medium">contact@explora-aventura.com</span>
               </a>
-              <div className="flex items-center space-x-3">
-                <MessageCircle className="w-4 h-4 text-green-400" />
-                <span className="text-gray-300 text-sm">+55 11 99999-9999</span>
+
+              {/* São Tomé */}
+              <div className="space-y-1.5">
+                <span className="font-semibold block text-orange-400 text-sm">São Tomé:</span>
+                <div className="flex items-start space-x-2 text-gray-300 text-sm">
+                  <MapPin className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
+                  <span>Av. Marginal 12 de Julho, São Tomé</span>
+                </div>
+                <div className="flex items-center space-x-2 text-gray-300 text-sm">
+                  <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                  <a href="tel:+2399048171" className="hover:text-orange-400 transition-colors">
+                    +239 904 8171
+                  </a>
+                </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 text-red-400 mt-1 flex-shrink-0" />
-                <div className="text-gray-300 text-sm space-y-2">
-                  <div>
-                    <span className="font-semibold block text-orange-400 text-xs">São Tomé:</span>
-                    Av. Marginal 12 de Julho, São Tomé
-                  </div>
-                  <div>
-                    <span className="font-semibold block text-orange-400 text-xs">Suíça:</span>
-                    Rue des Bossons 4, 1213 Genève
-                  </div>
-                  <div>
-                    <span className="font-semibold block text-orange-400 text-xs">Portugal:</span>
-                    R. da Fonte de Prata 38, Amora, Portugal
-                  </div>
+
+              {/* Suíça */}
+              <div className="space-y-1.5">
+                <span className="font-semibold block text-orange-400 text-sm">Suíça:</span>
+                <div className="flex items-start space-x-2 text-gray-300 text-sm">
+                  <MapPin className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
+                  <span>Rue des Bossons 4, 1213 Genève</span>
+                </div>
+                <div className="flex items-center space-x-2 text-gray-300 text-sm">
+                  <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                  <a href="tel:+41795369072" className="hover:text-orange-400 transition-colors">
+                    +41 79 536 90 72
+                  </a>
+                </div>
+              </div>
+
+              {/* Portugal */}
+              <div className="space-y-1.5">
+                <span className="font-semibold block text-orange-400 text-sm">Portugal:</span>
+                <div className="flex items-start space-x-2 text-gray-300 text-sm">
+                  <MapPin className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
+                  <span>R. da Fonte de Prata 38, Amora, Portugal</span>
+                </div>
+                <div className="flex items-center space-x-2 text-gray-300 text-sm">
+                  <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                  <a href="tel:+351924361850" className="hover:text-orange-400 transition-colors">
+                    +351 924 361 850
+                  </a>
                 </div>
               </div>
             </div>
