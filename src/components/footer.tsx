@@ -106,10 +106,13 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-orange-400" />
                 <span className="text-gray-300 text-sm">contact@explora-aventura.com</span>
               </div>
-              <div className="flex items-center space-x-3">
+              <a 
+                href="tel:+41779661285"
+                className="flex items-center space-x-3 hover:text-orange-400 transition-colors"
+              >
                 <Phone className="w-4 h-4 text-orange-400" />
-                <span className="text-gray-300 text-sm">+239 990 0000</span>
-              </div>
+                <span className="text-gray-300 text-sm">+41 77 966 12 85</span>
+              </a>
               <div className="flex items-center space-x-3">
                 <MessageCircle className="w-4 h-4 text-green-400" />
                 <span className="text-gray-300 text-sm">+55 11 99999-9999</span>

@@ -50,16 +50,19 @@ export default function Header() {
       <div className="bg-orange-600 text-white py-2 text-xs font-semibold select-none hidden md:block border-b border-orange-500/20">
         <div className="container mx-auto px-4 flex justify-between items-center max-w-full">
           <div className="flex gap-5">
-            <span className="flex items-center gap-1.5 hover:text-orange-100 transition-colors">
-              <Phone className="w-3.5 h-3.5" /> +239 990 0000
-            </span>
+            <a 
+              href="tel:+41779661285"
+              className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5" /> +41 77 966 12 85
+            </a>
             <span className="flex items-center gap-1.5 hover:text-orange-100 transition-colors">
               <Mail className="w-3.5 h-3.5" /> contact@explora-aventura.com
             </span>
           </div>
           <div className="flex gap-5 items-center">
             <a 
-              href="https://wa.me/2399900000" 
+              href="https://wa.me/41779661285" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
