@@ -161,6 +161,15 @@ export default function PasseioDetalhes() {
       const data = await response.json();
       console.log('Lead criado:', data);
 
+      // Disparar conversão do Google Ads de forma segura
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-18194429136/lead_passeio',
+          'value': valorFinal,
+          'currency': 'EUR'
+        });
+      }
+
       alert(`Solicitação de reserva recebida com sucesso!\n\nUm de nossos consultores entrará em contato pelo email ${customerInfo.email} para confirmar os detalhes e o pagamento.`);
 
       // Limpar formulário ou redirecionar para home
