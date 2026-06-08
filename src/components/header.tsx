@@ -65,7 +65,7 @@ export default function Header() {
           </div>
           <div className="flex gap-5 items-center">
             <a 
-              href="https://wa.me/2399048171" 
+              href="https://wa.me/351924361850" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
