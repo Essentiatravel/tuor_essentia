@@ -6,12 +6,16 @@ import { User, LogOut, Menu, X, Phone, Mail, MessageCircle } from "lucide-react"
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
+import ContactModal from "./contact-modal";
+
 
 export default function Header() {
   const { user, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+
 
   const scrollToSection = (sectionId: string) => {
     if (pathname !== "/") {
@@ -119,7 +123,7 @@ export default function Header() {
             Por que nos escolher
           </button>
           <button
-            onClick={() => scrollToSection('contato')}
+            onClick={() => setIsContactModalOpen(true)}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Contato
@@ -252,12 +256,12 @@ export default function Header() {
 
                   <button
                     onClick={() => {
-                      scrollToSection('contato');
                       setIsMobileMenuOpen(false);
+                      setIsContactModalOpen(true);
                     }}
                     className="w-full text-left py-3 px-4 rounded-lg text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
                   >
-                    📞 Contato
+                    ✉️ Enviar E-mail / Contato
                   </button>
                 </nav>
 
@@ -283,6 +287,7 @@ export default function Header() {
           </>
         )}
       </AnimatePresence>
+      <ContactModal open={isContactModalOpen} onOpenChange={setIsContactModalOpen} />
     </header>
   );
 }

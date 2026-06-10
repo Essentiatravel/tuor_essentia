@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Instagram, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import ContactModal from "./contact-modal";
+
 
 export default function Footer() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   return (
     <footer id="contato" className="bg-gray-900 text-white py-16">
       <div className="container mx-auto px-4">
@@ -112,6 +116,13 @@ export default function Footer() {
                 <span className="text-gray-300 text-sm font-medium">contact@explora-aventura.com</span>
               </a>
 
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg border border-orange-500/30 bg-orange-500/10 hover:bg-orange-50 hover:text-white transition-all text-orange-400 text-sm font-semibold cursor-pointer shadow-sm"
+              >
+                <Mail className="w-4 h-4" /> Enviar Mensagem por E-mail
+              </button>
+
               {/* São Tomé */}
               <div className="space-y-1.5">
                 <span className="font-semibold block text-orange-400 text-sm">São Tomé:</span>
@@ -193,6 +204,7 @@ export default function Footer() {
           </div>
         </motion.div>
       </div>
+      <ContactModal open={isContactModalOpen} onOpenChange={setIsContactModalOpen} />
     </footer>
   );
 }
