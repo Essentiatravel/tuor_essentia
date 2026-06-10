@@ -61,7 +61,17 @@ export default function ContactModal({ open, onOpenChange }: ContactModalProps) 
       const data = await res.json();
 
       if (res.ok && data.success) {
-        toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+        toast.success("Mensagem salva no sistema! Abrindo e-mail para envio...");
+        
+        // Formatar assunto e corpo do e-mail
+        const subject = encodeURIComponent(`Contato de ${nome.trim()} - Explora Aventura`);
+        const body = encodeURIComponent(
+          `Olá Explora Aventura,\n\nMeus dados de contato:\n- Nome: ${nome.trim()}\n- E-mail: ${email.trim()}\n- Telefone: ${telefone.trim() || "Não informado"}\n\nMensagem/Observações:\n${observacoes.trim()}\n\nAtenciosamente,\n${nome.trim()}`
+        );
+        
+        // Redireciona para abrir o cliente de e-mail do cliente
+        window.location.href = `mailto:contact@explora-aventura.com?subject=${subject}&body=${body}`;
+
         setNome("");
         setEmail("");
         setTelefone("");
