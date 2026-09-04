@@ -28,7 +28,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.instagram.com/essentia.travel"
+                href="https://www.instagram.com/marisenakagawa/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-transparent text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-500 hover:to-purple-600 hover:border-transparent transition-all duration-300"
