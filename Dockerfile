@@ -73,6 +73,7 @@ EXPOSE 3000
 
 # Healthcheck to help Easypanel monitor service health
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000', (res) => res.statusCode === 200 ? process.exit(0) : process.exit(1))"
+  CMD node -e "const port = process.env.PORT || 3000; require('http').get('http://localhost:' + port, (res) => res.statusCode === 200 ? process.exit(0) : process.exit(1))"
+
 
 CMD ["node", "server.js"]
