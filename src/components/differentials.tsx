@@ -28,7 +28,7 @@ export default function Differentials() {
     {
       icon: <Award className="w-8 h-8 text-red-500" />,
       title: "Experiências Autênticas",
-      description: "Conectamos você com a verdadeira cultura santomense, o 'Leve Leve' e a natureza pura"
+      description: "Conectamos você com a verdadeira cultura local, hospitalidade e experiências inesquecíveis"
     }
   ];
 
@@ -62,10 +62,10 @@ export default function Differentials() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-            Por que escolher a EXPLORA AVENTURA?
+            Por que escolher a ESSENTIA TRAVEL?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Especialistas em conectar viajantes à verdadeira essência de São Tomé e Príncipe
+            Especialistas em conectar viajantes às melhores experiências do mundo
           </p>
         </motion.div>
 

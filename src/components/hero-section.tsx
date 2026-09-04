@@ -36,12 +36,12 @@ export default function HeroSection() {
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Descubra a Magia de
-            <span className="text-orange-300"> São Tomé e Príncipe</span>
+            <span className="text-orange-300"> ESSENTIA TRAVEL</span>
           </h1>
 
           <p className="text-lg md:text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Explore as ilhas maravilhosas com quem entende. Roteiros únicos,
-            guias locais experientes e a verdadeira essência da África central.
+            Explore destinos incríveis com quem entende. Roteiros únicos,
+            guias locais experientes e a verdadeira essência de cada viagem.
           </p>
 
           <motion.div
@@ -57,7 +57,7 @@ export default function HeroSection() {
                 document.getElementById("explorar")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Sua Aventura Começa Aqui!
+              Sua Jornada Começa Aqui!
             </Button>
           </motion.div>
         </motion.div>

@@ -26,7 +26,7 @@ export default function Testimonials() {
       location: "Lisboa, Portugal",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80",
-      text: "Atendimento espetacular por WhatsApp! O sistema de reserva com opção de adultos e crianças calculou tudo direitinho e a equipe respondeu de imediato. São Tomé e Príncipe é um paraíso intocado e a Explora Aventura foi a melhor escolha.",
+      text: "Atendimento espetacular por WhatsApp! O sistema de reserva com opção de adultos e crianças calculou tudo direitinho e a equipe respondeu de imediato. A ESSENTIA TRAVEL foi a melhor escolha.",
       tags: ["Atendimento WhatsApp", "Roteiro"]
     },
     {

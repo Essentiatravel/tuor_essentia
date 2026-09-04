@@ -9,14 +9,14 @@ export async function POST() {
 
     const users = [
       {
-        email: "admin@exploraaventura.com.br",
-        nome: "Administrador Explora Aventura",
+        email: "admin@essentia.travel",
+        nome: "Administrador ESSENTIA TRAVEL",
         user_type: "admin",
         password: "admin123"
       },
       {
-        email: "guia@exploraaventura.com.br",
-        nome: "Guia Local",
+        email: "guia@essentia.travel",
+        nome: "Guia Local ESSENTIA TRAVEL",
         user_type: "guia",
         password: "guia123"
       }

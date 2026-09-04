@@ -65,7 +65,7 @@ export const AdminMobileNav: React.FC<MobileNavProps> = ({
             <MapPin className="h-4 w-4 text-white" />
           </div>
           <div>
-            <h1 className="font-bold text-sm text-gray-900">Explora Aventura</h1>
+            <h1 className="font-bold text-sm text-gray-900">ESSENTIA TRAVEL</h1>
             <p className="text-xs text-gray-600">Administrador</p>
           </div>
         </div>
@@ -109,7 +109,7 @@ export const AdminMobileNav: React.FC<MobileNavProps> = ({
                 </div>
                 <div>
                   <h1 className="font-bold text-lg text-gray-900">
-                    Explora Aventura
+                    ESSENTIA TRAVEL
                   </h1>
                   <p className="text-sm text-gray-600">Administrador</p>
                 </div>

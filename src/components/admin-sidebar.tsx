@@ -56,7 +56,7 @@ export const AdminSidebar: React.FC = () => {
             <MapPin className="h-5 w-5 text-white" />
           </div>
           <div className="min-w-0 flex-1">
-            <h1 className="font-bold text-base text-gray-900 truncate">Explora Aventura</h1>
+            <h1 className="font-bold text-base text-gray-900 truncate">ESSENTIA TRAVEL</h1>
             <p className="text-xs text-gray-600 truncate">Administrador</p>
           </div>
         </div>

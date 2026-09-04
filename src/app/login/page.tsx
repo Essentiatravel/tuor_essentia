@@ -80,10 +80,10 @@ function LoginForm() {
       >
         <Card className="border shadow-lg bg-white">
           <CardHeader className="space-y-1 text-center pb-6 border-b bg-white">
-            <h1 className="text-3xl font-bold tracking-tight text-orange-600">EXPLORA AVENTURA</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-orange-600">ESSENTIA TRAVEL</h1>
             <CardTitle className="text-xl text-gray-800">Acesse sua conta</CardTitle>
             <CardDescription className="text-gray-500">
-              Bem-vindo ao Explora Aventura
+              Bem-vindo ao ESSENTIA TRAVEL
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-6 space-y-6">

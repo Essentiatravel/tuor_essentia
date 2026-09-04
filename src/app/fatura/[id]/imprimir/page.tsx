@@ -34,7 +34,7 @@ export default async function FaturaPrintPage(props: { params: Promise<{ id: str
 
   const configResult = await db.query('SELECT * FROM empresa_configuracoes WHERE id = 1');
   const empresa = configResult.rows[0] || {
-    razao_social: "Explora Aventura Travel", slogan: "", email: "", telefone: "",
+    razao_social: "ESSENTIA TRAVEL", slogan: "", email: "contato@essentia.travel", telefone: "+39 123 456 789",
     p_iva: "", c_f: "", banco_nome: "", banco_conta: "", banco_pix: "", banco_beneficiario: ""
   };
 
@@ -95,7 +95,7 @@ export default async function FaturaPrintPage(props: { params: Promise<{ id: str
           <div className="flex flex-col">
             <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight flex items-center gap-2 mb-2">
               <span className="text-[#ea580c] text-3xl">✿</span>
-              {empresa.razao_social || 'Explora Aventura CRM'}
+              {empresa.razao_social || 'ESSENTIA CRM'}
             </h1>
             <div className="text-xs text-gray-500 font-bold mb-4 uppercase tracking-widest pl-1">
               {empresa.slogan}
@@ -216,7 +216,7 @@ export default async function FaturaPrintPage(props: { params: Promise<{ id: str
           </div>
           <div className="text-[9px] text-gray-400 mt-10 md:text-center uppercase tracking-widest font-semibold flex justify-center items-center gap-2">
             <span className="w-12 h-[1px] bg-gray-200"></span>
-            Documento Emitido Via Explora Aventura CRM
+            Documento Emitido Via ESSENTIA CRM
             <span className="w-12 h-[1px] bg-gray-200"></span>
           </div>
         </div>

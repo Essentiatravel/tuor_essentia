@@ -73,7 +73,7 @@ export async function GET(
     </head>
     <body>
       <div class="header">
-        <div class="logo">EXPLORA AVENTURA TOURS</div>
+        <div class="logo">ESSENTIA TRAVEL</div>
         <p>Recibo de Reserva #${dadosReserva.agendamentoId.substring(0, 8)}</p>
       </div>
 
@@ -108,7 +108,7 @@ export async function GET(
       </div>
 
       <div class="footer">
-        <p>Este é um recibo oficial da Explora Aventura Tours</p>
+        <p>Este é um recibo oficial da ESSENTIA TRAVEL</p>
         <p>Em caso de dúvidas, entre em contato conosco</p>
         <p>Gerado em: ${new Date().toLocaleString('pt-PT')}</p>
       </div>

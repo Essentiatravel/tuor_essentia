@@ -1,9 +1,9 @@
-# 🌍 PRD - ESSENTIA CRM (Explora Aventura)
+# 🌍 PRD - ESSENTIA CRM (ESSENTIA TRAVEL)
 
 Este documento serve como referência técnica e funcional para agentes e desenvolvedores entenderem o ecossistema do sistema.
 
 ## 🚀 Visão Geral
-O **ESSENTIA CRM** é uma plataforma robusta de gestão de relacionamento e operações para agências de turismo, especificamente focada na **Explora Aventura** (São Tomé e Príncipe). O sistema gerencia desde a vitrine pública de passeios até o controle financeiro, atribuição de guias e área logada de clientes.
+O **ESSENTIA CRM** é uma plataforma robusta de gestão de relacionamento e operações para agências de turismo, especificamente focada na **ESSENTIA TRAVEL**. O sistema gerencia desde a vitrine pública de passeios até o controle financeiro, atribuição de guias e área logada de clientes.
 
 ---
 

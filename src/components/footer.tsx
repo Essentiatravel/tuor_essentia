@@ -21,14 +21,14 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
           >
             <Link href="/">
-              <h3 className="text-2xl font-bold text-orange-400 mb-4 cursor-pointer">EXPLORA AVENTURA</h3>
+              <h3 className="text-2xl font-bold text-orange-400 mb-4 cursor-pointer">ESSENTIA TRAVEL</h3>
             </Link>
             <p className="text-gray-300 leading-relaxed mb-6">
-              Explore o mundo com quem entende. Sua aventura começa aqui.
+              Explore o mundo com quem entende. Sua jornada dos sonhos começa aqui.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.instagram.com/exploraaventura.stp?igsh=Zm9qZHY0amR1cHZs&utm_source=qr"
+                href="https://www.instagram.com/essentia.travel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-transparent text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-500 hover:to-purple-600 hover:border-transparent transition-all duration-300"
@@ -36,7 +36,7 @@ export default function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/351924361850"
+                href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-transparent text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-600 transition-all duration-300"
@@ -109,11 +109,11 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Contato</h4>
             <div className="space-y-4">
               <a 
-                href="mailto:contact@explora-aventura.com"
+                href="mailto:contato@essentia.travel"
                 className="flex items-center space-x-3 hover:text-orange-400 transition-colors pb-2 border-b border-gray-800"
               >
                 <Mail className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                <span className="text-gray-300 text-sm font-medium">contact@explora-aventura.com</span>
+                <span className="text-gray-300 text-sm font-medium">contato@essentia.travel</span>
               </a>
 
               <button 
@@ -123,47 +123,28 @@ export default function Footer() {
                 <Mail className="w-4 h-4" /> Enviar Mensagem por E-mail
               </button>
 
-              {/* São Tomé */}
+              {/* Roma, Itália */}
               <div className="space-y-1.5">
-                <span className="font-semibold block text-orange-400 text-sm">São Tomé:</span>
+                <span className="font-semibold block text-orange-400 text-sm">Roma, Itália:</span>
                 <div className="flex items-start space-x-2 text-gray-300 text-sm">
                   <MapPin className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
-                  <span>Av. Marginal 12 de Julho, São Tomé</span>
+                  <span>Roma, Itália</span>
                 </div>
                 <div className="flex items-center space-x-2 text-gray-300 text-sm">
                   <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                  <a href="tel:+2399048171" className="hover:text-orange-400 transition-colors">
-                    +239 904 8171
+                  <a href="tel:+39123456789" className="hover:text-orange-400 transition-colors">
+                    +39 123 456 789
                   </a>
                 </div>
               </div>
 
-              {/* Suíça */}
+              {/* WhatsApp Brasil */}
               <div className="space-y-1.5">
-                <span className="font-semibold block text-orange-400 text-sm">Suíça:</span>
-                <div className="flex items-start space-x-2 text-gray-300 text-sm">
-                  <MapPin className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
-                  <span>Rue des Bossons 4, 1213 Genève</span>
-                </div>
+                <span className="font-semibold block text-orange-400 text-sm">WhatsApp Atendimento:</span>
                 <div className="flex items-center space-x-2 text-gray-300 text-sm">
-                  <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                  <a href="tel:+41795369072" className="hover:text-orange-400 transition-colors">
-                    +41 79 536 90 72
-                  </a>
-                </div>
-              </div>
-
-              {/* Portugal */}
-              <div className="space-y-1.5">
-                <span className="font-semibold block text-orange-400 text-sm">Portugal:</span>
-                <div className="flex items-start space-x-2 text-gray-300 text-sm">
-                  <MapPin className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
-                  <span>R. da Fonte de Prata 38, Amora, Portugal</span>
-                </div>
-                <div className="flex items-center space-x-2 text-gray-300 text-sm">
-                  <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                  <a href="tel:+351924361850" className="hover:text-orange-400 transition-colors">
-                    +351 924 361 850
+                  <MessageCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                  <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors">
+                    +55 11 99999-9999
                   </a>
                 </div>
               </div>
@@ -189,7 +170,7 @@ export default function Footer() {
           className="flex flex-col md:flex-row justify-between items-center"
         >
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2024 EXPLORA AVENTURA. Todos os direitos reservados.
+            © 2024 ESSENTIA TRAVEL. Todos os direitos reservados.
           </div>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">

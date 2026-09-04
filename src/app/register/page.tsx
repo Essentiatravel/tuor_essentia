@@ -101,7 +101,7 @@ export default function RegisterPage() {
       >
         <Card className="border shadow-lg bg-white">
           <CardHeader className="space-y-1 text-center pb-6 border-b bg-gray-50/50">
-            <h1 className="text-3xl font-bold tracking-tight text-orange-600">EXPLORA AVENTURA</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-orange-600">ESSENTIA TRAVEL</h1>
             <CardTitle className="text-xl text-gray-800">Crie sua conta</CardTitle>
             <CardDescription>
               Preencha os dados abaixo para se cadastrar

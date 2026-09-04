@@ -16,19 +16,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EXPLORA AVENTURA - Descubra São Tomé e Príncipe com quem entende",
-  description: "Explore a magia das ilhas de São Tomé e Príncipe. Roteiros personalizados, guias locais experientes e experiências autênticas em roças, praias e natureza selvagem.",
+  title: "ESSENTIA TRAVEL - Explore a Itália com quem entende",
+  description: "Explore a magia da Itália com quem entende. Roteiros personalizados, guias locais experientes e experiências autênticas em Roma, Toscana e mais.",
   openGraph: {
-    title: "EXPLORA AVENTURA - Descubra São Tomé e Príncipe com quem entende",
-    description: "Explore a magia das ilhas de São Tomé e Príncipe. Roteiros personalizados, guias locais experientes e experiências autênticas.",
+    title: "ESSENTIA TRAVEL - Explore a Itália com quem entende",
+    description: "Explore a magia da Itália com quem entende. Roteiros personalizados, guias locais experientes e experiências autênticas.",
     type: "website",
     locale: "pt_BR",
-    siteName: "EXPLORA AVENTURA",
+    siteName: "ESSENTIA TRAVEL",
   },
   twitter: {
     card: "summary_large_image",
-    title: "EXPLORA AVENTURA - Descubra São Tomé e Príncipe com quem entende",
-    description: "Explore a magia das ilhas de São Tomé e Príncipe. Roteiros personalizados, guias locais experientes e experiências autênticas.",
+    title: "ESSENTIA TRAVEL - Explore a Itália com quem entende",
+    description: "Explore a magia da Itália com quem entende. Roteiros personalizados, guias locais experientes e experiências autênticas.",
   },
 };
 

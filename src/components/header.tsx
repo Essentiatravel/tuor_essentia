@@ -55,21 +55,21 @@ export default function Header() {
         <div className="container mx-auto px-4 flex justify-between items-center max-w-full">
           <div className="flex gap-5">
             <a 
-              href="tel:+41795369072"
+              href="tel:+39123456789"
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
             >
-              <Phone className="w-3.5 h-3.5" /> +41 79 536 90 72
+              <Phone className="w-3.5 h-3.5" /> +39 123 456 789
             </a>
             <a 
-              href="mailto:contact@explora-aventura.com"
+              href="mailto:contato@essentia.travel"
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
             >
-              <Mail className="w-3.5 h-3.5" /> contact@explora-aventura.com
+              <Mail className="w-3.5 h-3.5" /> contato@essentia.travel
             </a>
           </div>
           <div className="flex gap-5 items-center">
             <a 
-              href="https://wa.me/351924361850" 
+              href="https://wa.me/5511999999999" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
@@ -77,7 +77,7 @@ export default function Header() {
               <MessageCircle className="w-4 h-4 fill-white text-orange-600 animate-pulse" /> Fale no WhatsApp
             </a>
             <span className="text-orange-200">|</span>
-            <span>📍 Av. Marginal 12 de Julho, São Tomé</span>
+            <span>📍 Roma, Itália</span>
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-full">
         <div className="flex items-center">
           <Link href="/">
-            <h1 className="text-2xl font-bold text-orange-600 cursor-pointer">EXPLORA AVENTURA</h1>
+            <h1 className="text-2xl font-bold text-orange-600 cursor-pointer">ESSENTIA</h1>
           </Link>
           <span className="ml-2 text-sm text-muted-foreground hidden sm:block">
           </span>
@@ -192,7 +192,7 @@ export default function Header() {
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center">
                     <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                      <h1 className="text-xl font-bold text-orange-600">EXPLORA AVENTURA</h1>
+                      <h1 className="text-xl font-bold text-orange-600">ESSENTIA</h1>
                     </Link>
                   </div>
                   <Button

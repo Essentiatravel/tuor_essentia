@@ -14,7 +14,7 @@ const VoucherImpressao: React.FC<VoucherImpressaoProps> = ({ tarefa }) => {
             {/* Header */}
             <div className="flex justify-between items-start border-b-2 border-gray-800 pb-6 mb-8">
                 <div>
-                    <h1 className="text-3xl font-extrabold tracking-tighter text-orange-600 mb-1">EXPLORA AVENTURA</h1>
+                    <h1 className="text-3xl font-extrabold tracking-tighter text-orange-600 mb-1">ESSENTIA TRAVEL</h1>
                     <p className="text-sm text-gray-600 uppercase tracking-widest font-semibold">Ordem de Serviço / Voucher</p>
                 </div>
                 <div className="text-right">
@@ -105,8 +105,8 @@ const VoucherImpressao: React.FC<VoucherImpressaoProps> = ({ tarefa }) => {
 
             {/* Footer */}
             <div className="mt-auto border-t pt-6 text-center text-xs text-gray-400">
-                <p>Este documento é uma confirmação de serviço gerada pelo Explora Aventura CRM.</p>
-                <p className="mt-1">© 2026 Explora Aventura Tour & Travel - Todos os direitos reservados.</p>
+                <p>Este documento é uma confirmação de serviço gerada pelo ESSENTIA CRM.</p>
+                <p className="mt-1">© 2026 ESSENTIA TRAVEL - Todos os direitos reservados.</p>
             </div>
 
             {/* CSS para Impressão - Abordagem mais agressiva para garantir visibilidade */}
