@@ -55,21 +55,21 @@ export default function Header() {
         <div className="container mx-auto px-4 flex justify-between items-center max-w-full">
           <div className="flex gap-5">
             <a 
-              href="tel:+39123456789"
+              href="tel:+393347339210"
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
             >
-              <Phone className="w-3.5 h-3.5" /> +39 123 456 789
+              <Phone className="w-3.5 h-3.5" /> +39 334 733 9210
             </a>
             <a 
-              href="mailto:contato@essentia.travel"
+              href="mailto:marise@marisenakagawa.com"
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"
             >
-              <Mail className="w-3.5 h-3.5" /> contato@essentia.travel
+              <Mail className="w-3.5 h-3.5" /> marise@marisenakagawa.com
             </a>
           </div>
           <div className="flex gap-5 items-center">
             <a 
-              href="https://wa.me/5511999999999" 
+              href="https://wa.me/393347339210" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center gap-1.5 hover:text-orange-100 transition-colors"

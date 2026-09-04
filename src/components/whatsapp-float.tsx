@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
 export default function WhatsAppFloat() {
-  const whatsappUrl = "https://wa.me/5511999999999"; // Official contact
+  const whatsappUrl = "https://wa.me/393347339210"; // Contact Marise Nakagawa
+
 
   return (
     <div className="fixed bottom-6 right-6 z-50 pointer-events-none">

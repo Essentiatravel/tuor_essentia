@@ -36,7 +36,7 @@ export default function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://wa.me/5511999999999"
+                href="https://wa.me/393347339210"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-transparent text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-600 transition-all duration-300"
@@ -109,11 +109,11 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Contato</h4>
             <div className="space-y-4">
               <a 
-                href="mailto:contato@essentia.travel"
+                href="mailto:marise@marisenakagawa.com"
                 className="flex items-center space-x-3 hover:text-orange-400 transition-colors pb-2 border-b border-gray-800"
               >
                 <Mail className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                <span className="text-gray-300 text-sm font-medium">contato@essentia.travel</span>
+                <span className="text-gray-300 text-sm font-medium">marise@marisenakagawa.com</span>
               </a>
 
               <button 
@@ -123,28 +123,28 @@ export default function Footer() {
                 <Mail className="w-4 h-4" /> Enviar Mensagem por E-mail
               </button>
 
-              {/* Roma, Itália */}
+              {/* Itália */}
               <div className="space-y-1.5">
-                <span className="font-semibold block text-orange-400 text-sm">Roma, Itália:</span>
+                <span className="font-semibold block text-orange-400 text-sm">Itália / WhatsApp:</span>
                 <div className="flex items-start space-x-2 text-gray-300 text-sm">
                   <MapPin className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
-                  <span>Roma, Itália</span>
+                  <span>Toscana / Roma, Itália</span>
                 </div>
                 <div className="flex items-center space-x-2 text-gray-300 text-sm">
                   <Phone className="w-4 h-4 text-orange-400 flex-shrink-0" />
-                  <a href="tel:+39123456789" className="hover:text-orange-400 transition-colors">
-                    +39 123 456 789
+                  <a href="tel:+393347339210" className="hover:text-orange-400 transition-colors">
+                    +39 334 733 9210
                   </a>
                 </div>
               </div>
 
-              {/* WhatsApp Brasil */}
+              {/* WhatsApp Atendimento */}
               <div className="space-y-1.5">
-                <span className="font-semibold block text-orange-400 text-sm">WhatsApp Atendimento:</span>
+                <span className="font-semibold block text-orange-400 text-sm">WhatsApp Directo:</span>
                 <div className="flex items-center space-x-2 text-gray-300 text-sm">
                   <MessageCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
-                  <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors">
-                    +55 11 99999-9999
+                  <a href="https://wa.me/393347339210" target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 transition-colors">
+                    +39 334 733 9210
                   </a>
                 </div>
               </div>

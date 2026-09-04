@@ -70,7 +70,7 @@ export default function ContactModal({ open, onOpenChange }: ContactModalProps) 
         );
         
         // Redireciona para abrir o cliente de e-mail do cliente
-        window.location.href = `mailto:contato@essentia.travel?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:marise@marisenakagawa.com?subject=${subject}&body=${body}`;
 
         setNome("");
         setEmail("");
@@ -153,7 +153,7 @@ export default function ContactModal({ open, onOpenChange }: ContactModalProps) 
             <Input
               id="contact-telefone"
               type="tel"
-              placeholder="Ex: +55 (11) 99999-9999"
+              placeholder="Ex: +39 334 733 9210"
               value={telefone}
               onChange={(e) => setTelefone(e.target.value)}
               disabled={isSubmitting}
