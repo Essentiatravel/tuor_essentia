@@ -96,7 +96,7 @@ export default function PacotesPublicPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-light"
           >
-            Aproveite o melhor de São Tomé e Príncipe com combos pensados para maximizar sua aventura e oferecer o melhor custo-benefício.
+            Aproveite o melhor da Itália e Toscana com combos pensados para maximizar sua viagem e oferecer o melhor custo-benefício.
           </motion.p>
         </div>
       </section>

@@ -18,7 +18,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/sao_tome_hero.png"
-          alt="Bela praia em São Tomé e Príncipe"
+          alt="Belas paisagens da Itália e Toscana"
           fill
           priority
           className="object-cover"

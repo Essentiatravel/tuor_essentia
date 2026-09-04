@@ -8,17 +8,17 @@ export default function ExperienceTypes() {
     {
       icon: <Heart className="w-8 h-8 text-red-500" />,
       title: "Turismo Romântico",
-      description: "Experiências íntimas em praias desertas e roças históricas, perfeitas para casais em lua de mel"
+      description: "Experiências exclusivas nas colinas da Toscana e vilas históricas, perfeitas para casais em lua de mel"
     },
     {
       icon: <Users className="w-8 h-8 text-blue-500" />,
-      title: "Eco-Aventura",
-      description: "Explore o Parque Nacional Obô, trilhas na selva e mergulhos em águas cristalinas com guias locais"
+      title: "Gastronomia & Vinhos",
+      description: "Explore a famosa rota de vinhos de Chianti, degustações exclusivas e a autêntica culinária italiana"
     },
     {
       icon: <Camera className="w-8 h-8 text-green-500" />,
       title: "Cultura e História",
-      description: "Mergulhe na rica história das roças, na rota do café e chocolate e nas tradições santomenses"
+      description: "Mergulhe no berço do Renascimento em Florença, museus imperdíveis e a rica história de Roma"
     }
   ];
 
@@ -55,7 +55,7 @@ export default function ExperienceTypes() {
             Escolha sua experiência
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Cada tipo de turismo é uma porta para descobrir São Tomé e Príncipe de forma única e inesquecível
+            Cada tipo de roteiro é uma porta para descobrir a Itália de forma única e inesquecível
           </p>
         </motion.div>
 

@@ -43,8 +43,8 @@ export default function Destinations() {
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
             {activeTab === "passeios" 
-              ? "Explore roteiros únicos criados por quem vive e ama São Tomé e Príncipe."
-              : "Economize garantindo combos especiais que reúnem as melhores experiências da ilha."}
+              ? "Explore roteiros únicos criados por quem vive e ama a Itália."
+              : "Economize garantindo combos especiais que reúnem as melhores experiências da Toscana e Roma."}
           </p>
           
           <div className="flex justify-center bg-gray-100 p-1 rounded-xl w-fit mx-auto mb-12">

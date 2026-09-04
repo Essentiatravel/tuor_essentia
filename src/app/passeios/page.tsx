@@ -23,8 +23,8 @@ export default function PasseiosPage() {
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-300 max-w-2xl mx-auto"
           >
-            Descubra as experiências mais autênticas e memoráveis de São Tomé e Príncipe. 
-            Roteiros selecionados para todos os perfis de aventureiros.
+            Descubra as experiências mais autênticas e memoráveis da Itália. 
+            Roteiros selecionados para todos os perfis de viajantes.
           </motion.p>
         </div>
       </div>

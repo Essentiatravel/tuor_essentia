@@ -6,18 +6,18 @@ export default function AboutUs() {
   const trustPillars = [
     {
       icon: <ShieldCheck className="w-6 h-6 text-orange-600" />,
-      title: "Frota 4x4 Própria & Segura",
-      description: "Operamos com veículos modernos e robustos de tração integral, revisados constantemente para garantir total conforto nas trilhas e estradas de São Tomé."
+      title: "Transporte Confortável & Seguro",
+      description: "Operamos com veículos modernos e executivos, revisados constantemente para garantir total conforto e segurança nos roteiros pela Itália."
     },
     {
       icon: <Compass className="w-6 h-6 text-green-600" />,
       title: "Guias Nativos Credenciados",
-      description: "Equipe 100% local, registrada no Ministério do Turismo e altamente treinada em botânica, história das Roças e segurança em trekking."
+      description: "Equipe de guias credenciadas e altamente experientes em história da arte, gastronomia e os segredos da Toscana."
     },
     {
       icon: <Heart className="w-6 h-6 text-red-600" />,
-      title: "Impacto Social & Eco-Turismo",
-      description: "Praticamos turismo sustentável (Leve Leve), gerando emprego direto nas comunidades e apoiando a conservação da biodiversidade das ilhas."
+      title: "Roteiros Exclusivos & Personalizados",
+      description: "Oferecemos turismo de alta qualidade e atendimento VIP, garantindo uma imersão cultural inesquecível e memórias eternas."
     }
   ];
 
@@ -42,7 +42,7 @@ export default function AboutUs() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-orange-600 text-white p-5 rounded-2xl shadow-xl z-20 text-center flex flex-col items-center justify-center border-4 border-white select-none">
               <Calendar className="w-6 h-6 mb-1 text-orange-100" />
               <span className="text-xl font-extrabold">Desde 2018</span>
-              <span className="text-[10px] uppercase font-bold tracking-widest text-orange-200">Aventura Segura</span>
+              <span className="text-[10px] uppercase font-bold tracking-widest text-orange-200">Viagem Inesquecível</span>
             </div>
 
             <div className="space-y-4">
@@ -56,7 +56,7 @@ export default function AboutUs() {
               <div className="rounded-3xl overflow-hidden shadow-lg h-44 hover:scale-[1.02] transition-transform duration-300">
                 <img 
                   src="/about/real-4.jpg" 
-                  alt="Guia Local e Cliente Feliz em São Tomé" 
+                  alt="Guia Local e Cliente Feliz na Itália" 
                   className="w-full h-full object-cover object-[center_15%]"
                 />
               </div>
@@ -66,14 +66,14 @@ export default function AboutUs() {
               <div className="rounded-3xl overflow-hidden shadow-lg h-44 hover:scale-[1.02] transition-transform duration-300">
                 <img 
                   src="/about/real-3.jpg" 
-                  alt="Breathtaking Pico Cão Grande volcanic needle" 
+                  alt="Paisagens deslumbrantes da Itália" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg h-64 hover:scale-[1.02] transition-transform duration-300">
                 <img 
                   src="/about/real-2.jpg" 
-                  alt="Grupo de Clientes no Pico Cão Grande com Guia" 
+                  alt="Grupo de Clientes em Roteiro com Guia" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -92,11 +92,11 @@ export default function AboutUs() {
               Quem Somos
             </span>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 leading-tight mb-6">
-              Nossa História & Paixão por São Tomé e Príncipe
+              Nossa História & Paixão pela Itália
             </h2>
             <div className="space-y-5 text-gray-600 leading-relaxed text-base md:text-lg">
               <p>
-                A <strong>ESSENTIA TRAVEL</strong> nasceu com o propósito claro de conectar viajantes do mundo inteiro a experiências autênticas, inesquecíveis e personalizadas. Para garantir um atendimento próximo, seguro e de padrão internacional, contamos com colaboradores dedicados e altamente qualificados. Não vendemos apenas passeios; criamos expedições marcantes e totalmente personalizadas.
+                A <strong>ESSENTIA TRAVEL</strong> nasceu com o propósito claro de conectar viajantes a experiências autênticas, inesquecíveis e personalizadas na Itália. Para garantir um atendimento próximo, seguro e de padrão internacional, contamos com colaboradores dedicados e altamente qualificados. Não vendemos apenas passeios; criamos expedições marcantes e totalmente personalizadas.
               </p>
               <p>
                 Fundada por profissionais do turismo e guias locais experientes, nossa agência é dedicada a proporcionar momentos únicos com o suporte contínuo de nossa equipe global. Acreditamos no turismo de impacto positivo, onde cada visitante desfruta de roteiros impecáveis e memórias eternas.
