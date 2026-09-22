@@ -71,9 +71,15 @@ const nextConfig: NextConfig = {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
+        ],
+      },
+      {
+        // Apenas rotas de API não devem guardar cache do navegador
+        source: '/api/(.*)',
+        headers: [
           {
             key: 'Cache-Control',
-            value: 'no-cache, no-store, must-revalidate',
+            value: 'no-store, max-age=0',
           },
         ],
       },

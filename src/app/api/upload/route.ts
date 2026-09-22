@@ -14,6 +14,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Nenhum arquivo enviado" }, { status: 400 });
     }
 
+    // Validação de segurança de arquivos (Security & Malware Prevention)
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+    if (file.size > MAX_FILE_SIZE) {
+      return NextResponse.json({ error: "Arquivo muito grande. O limite máximo é de 5MB." }, { status: 400 });
+    }
+
+    const ALLOWED_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg", ".pdf"]);
+    const ext = path.extname(file.name).toLowerCase();
+    if (!ALLOWED_EXTENSIONS.has(ext)) {
+      return NextResponse.json(
+        { error: `Tipo de arquivo não permitido (${ext}). Envie apenas imagens ou PDFs.` },
+        { status: 400 }
+      );
+    }
+
     const buffer = Buffer.from(await file.arrayBuffer());
     const relativeUploadDir = "/uploads";
     const uploadDir = path.join(process.cwd(), "public", relativeUploadDir);
